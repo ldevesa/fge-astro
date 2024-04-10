@@ -1,0 +1,15 @@
+---
+import HomeLayout from '../../layouts/HomeLayout.astro';
+import { SliderHome } from "../../components/slider-home";
+
+---
+
+<HomeLayout>
+	<SliderHome 
+	client:only="react" 
+	title="Your time and dedication can change your future"
+	description="Your time can change your future. Be part of a team committed to education, providing school support to the children who need it most."
+	button="I want to be a volunteer >"
+	/>
+</HomeLayout>
+
