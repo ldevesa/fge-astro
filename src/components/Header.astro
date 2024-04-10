@@ -224,31 +224,9 @@ function setupSidebar() {
 
 }
 
-function activeLink() {
-    const navLinks = document.querySelectorAll("nav a");
-
-    navLinks.forEach((link) => {
-        const anchorLink = link as HTMLAnchorElement; // Casting to HTMLAnchorElement
-        anchorLink.classList.remove("active");
-
-        // `slice` here to remove the first `/` in pathname
-        const currentPath = window.location.pathname.slice(1);
-
-        // `anchorLink.href` returns a whole url, such as: "https://somedomain.com/posts" and we only need the last part
-        const hrefArray = anchorLink.href.split("/");
-        const thisPath = hrefArray[hrefArray.length - 1];
-
-        if (currentPath === thisPath) {
-            anchorLink.classList.add("active");
-        }
-    });
-}
-
-
 // Ejecutar la función setupSidebar() cada vez que ocurre una transición de página
 document.addEventListener('astro:page-load', () => {
     setupSidebar();
-    activeLink();
 });
     
 </script>
