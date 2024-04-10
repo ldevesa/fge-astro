@@ -16,21 +16,22 @@ console.log('currentPath', currentPath);
 
 const pathname = new URL(Astro.request.url).pathname;
 console.log('pathname', pathname);
-const currentPath2 = pathname.slice(1); // remove the first "/"
-console.log('currentPath2', currentPath2);
 
-console.log('translatePath', translatePath('/nosotros'));
+//const currentPath2 = pathname.slice(1); // remove the first "/"
+//console.log('currentPath2', currentPath2);
+
+//console.log('translatePath', translatePath('/nosotros'));
 
 ---
 
-<nav class="relative px-4 py-2 flex justify-end items-center bg-white dark:bg-gray-800 border-b-2 dark:border-gray-600 z-30">
+<nav class="relative px-4 py-2 flex justify-end items-center bg-white">
     <div class="px-5">{t('nav.idioma')}</div>
     <LanguageSelector />
 </nav>
 
-<nav class="relative px-4 py-2 flex justify-between items-center bg-white dark:bg-gray-800 border-b-2 dark:border-gray-600 z-20">
+<nav class="relative px-4 py-2 flex justify-between items-center bg-white">
 
-    <a class="text-2xl font-bold text-violet-600 dark:text-white" href="/">
+    <a class="text-2xl font-bold text-violet-600" href="/">
         <Image src={fgeNewLogo} alt='Fundación Gestionar Esperanzas' />
     </a>
 
@@ -52,12 +53,12 @@ console.log('translatePath', translatePath('/nosotros'));
 
         <li id={currentPath === translatePath('/') ? 'active' : ''}>
             <a href={translatePath('/')}
-                class="block py-2 pl-3 pr-4 text-white bg-cyan-700 rounded lg:bg-transparent lg:text-cyan-700 lg:p-0 dark:text-white"
+                class="block py-2 pl-3 pr-4 text-white bg-cyan-700 rounded lg:bg-transparent lg:text-cyan-700 lg:p-0"
                 aria-current="page">{t('nav.inicio')}</a>
         </li>
         <li class="group" id={currentPath === translatePath('/nosotros') ? 'active' : ''}>
             <a href={translatePath('/nosotros')}
-                class="flex items-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.nosotros')} <svg class="ml-2 w-3 h-3 text-gray-500 transition group-hover:rotate-90" xmlns="http://www.w3.org/2000/svg"
+                class="flex items-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.nosotros')} <svg class="ml-2 w-3 h-3 text-gray-500 transition group-hover:rotate-90" xmlns="http://www.w3.org/2000/svg"
                 width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
@@ -72,15 +73,15 @@ console.log('translatePath', translatePath('/nosotros'));
         </li>
         <li id={currentPath === translatePath('/que-hacemos') ? 'active' : ''}>
             <a href={translatePath('/que-hacemos')}
-                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.que-hacemos')}</a>
+                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.que-hacemos')}</a>
         </li>
         <li id={currentPath === translatePath('/sumate') ? 'active' : ''}>
             <a href={translatePath('/sumate')}
-                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.sumate')}</a>
+                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.sumate')}</a>
         </li>
         <li id={currentPath === translatePath('/contacto') ? 'active' : ''}>
             <a href={translatePath('/contacto')}
-                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.contacto')}</a>
+                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.contacto')}</a>
         </li>
 
     </ul>
@@ -96,7 +97,7 @@ console.log('translatePath', translatePath('/nosotros'));
         </a>
 
         <div>
-            <a class=" py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black  hover:bg-gray-100 dark:text-gray-300 dark:bg-gray-700 hidden lg:inline-block "
+            <a class=" py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black  hover:bg-gray-100 hidden lg:inline-block "
                 href="https://donaronline.org/fundacion-gestionar-esperanzas/fundacion-gestionar-esperanzas-argentina" target="_blank">
                 Donar
             </a>
@@ -111,10 +112,10 @@ console.log('translatePath', translatePath('/nosotros'));
 <!-- mobile sidebar navbar -->
 <div class="fixed top-0 z-40 w-60 sm:w-80 md:w-80 lg:w-80 overflow-y-hidden transition-transform transform -translate-x-full ease-in-out duration-300"
     id="sidebar">
-    <nav class="min-h-screen bg-white dark:bg-gray-600 max-w-sm py-6 px-6 border-r">
+    <nav class="min-h-screen bg-white max-w-sm py-6 px-6 border-r">
 
         <div class="flex items-center mb-8">
-        <a class="mr-auto text-black text-cyan-600 dark:text-gray-100"
+        <a class="mr-auto text-black text-cyan-600"
             href="/">
             <Image src={fgeNewLogo} alt='Fundación Gestionar Esperanzas' />
         </a>
@@ -124,12 +125,10 @@ console.log('translatePath', translatePath('/nosotros'));
 
         <ul>
 
-        <li id={currentPath === translatePath('/') ? 'active' : ''}>
-            <a href={translatePath('/')}
-                class="block py-2 pl-3 pr-4 text-white rounded lg:bg-transparent lg:text-cyan-700 lg:p-0 dark:text-white"
-                aria-current="page">{t('nav.inicio')}</a>
+        <li id={currentPath === translatePath('/') ? 'active' : ''} class="block py-2 pl-3 pr-4 text-gray-700 rounded lg:bg-transparent lg:text-cyan-700 lg:p-0 dark:text-white">
+            <a href={translatePath('/')}>{t('nav.inicio')}</a>
         </li>
-        <li class="block py-2 pl-3 pr-4 w-full text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+        <li class="block py-2 pl-3 pr-4 w-full text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 "
         id={currentPath === translatePath('/nosotros') ? 'active' : ''}>
             <details class="group">
                 <summary class="flex justify-between marker:content-none hover:cursor-pointer">
@@ -152,15 +151,15 @@ console.log('translatePath', translatePath('/nosotros'));
         </li>
         <li id={currentPath === translatePath('/que-hacemos') ? 'active' : ''}>
             <a href={translatePath('/que-hacemos')}
-                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.que-hacemos')}</a>
+                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.que-hacemos')}</a>
         </li>
         <li id={currentPath === translatePath('/sumate') ? 'active' : ''}>
             <a href={translatePath('/sumate')}
-                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.sumate')}</a>
+                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.sumate')}</a>
         </li>
         <li id={currentPath === translatePath('/contacto') ? 'active' : ''}>
             <a href={translatePath('/contacto')}
-                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">{t('nav.contacto')}</a>
+                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-cyan-700 lg:p-0">{t('nav.contacto')}</a>
         </li>
         </ul>
 
@@ -168,14 +167,14 @@ console.log('translatePath', translatePath('/nosotros'));
         <ul class="absolute inset-x-6 bottom-0">
 
             <li>
-                <a class="block py-1.5 px-3 m-1 text-center bg-lime-700 border rounded-md text-white  hover:bg-lime-500 hover:text-gray-100 dark:text-gray-200 dark:bg-lime-700 dark:hover:bg-lime-500 px-4 py-3 mb-2 text-xs text-center text-white font-semibol rounded-xl"
+                <a class="block py-1.5 px-3 m-1 text-center bg-green-700 border rounded-md text-white  hover:bg-green-500 hover:text-gray-100 px-4 py-3 mb-2 text-xs text-center text-white font-semibol rounded-xl"
                 href="https://api.whatsapp.com/send/?phone=5491168800674&text&type=phone_number&app_absent=0" target="_blank">
                     <Icon name="mdi:whatsapp" style="width: 2.1rem; height: 2.1rem; display: inline-block;" /> Whatsapp
                 </a>
             </li>
 
             <li>
-                <a class="block py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black  hover:bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-4 py-3 mb-3 text-sm text-center font-semibold rounded-xl"
+                <a class="block py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black  hover:bg-gray-100 px-4 py-3 mb-3 text-sm text-center font-semibold rounded-xl"
                     href="https://donaronline.org/fundacion-gestionar-esperanzas/fundacion-gestionar-esperanzas-argentina" target="_blank">
                     Donar
                 </a>
