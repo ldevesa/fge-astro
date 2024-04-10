@@ -19,10 +19,10 @@ export function SliderHome(props) {
           ))}
         </div>
       )}
-      autoplay="true"
-      loop="true"
+      autoplay={true}
+      loop={true}
       transition={{ type:"tween",  duration:"0.5" }}
-      autoplayDelay="4000"
+      autoplayDelay={4000}
     >
       <div className="relative h-96 overflow-hidden md:min-h-[500px]">
         <img

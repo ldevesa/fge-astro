@@ -1,10 +1,9 @@
 ---
 import { languages } from '../i18n/ui';
-import { getLangFromUrl, getRouteFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import { getLangFromUrl, getRouteFromUrl, useTranslatedPath } from '../i18n/utils';
 
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const route = getRouteFromUrl(Astro.url);
