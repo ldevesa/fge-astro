@@ -9,13 +9,7 @@ const translatePath = useTranslatedPath(lang);
 const route = getRouteFromUrl(Astro.url);
 console.log('Ruta', route);
 
-// current path
 const currentPath =  `${(new URL(Astro.url).pathname)}`;
-const partes = currentPath.split('/');
-const partesEliminadas = partes.slice(2);
-const actual = partesEliminadas.join('/'); 
-console.log('actual', actual);
-console.log('Current Path', currentPath);
 
 ---
 
