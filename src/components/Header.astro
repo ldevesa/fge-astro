@@ -51,10 +51,10 @@ console.log('pathname', pathname);
     <ul
         class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
 
-        <li class={currentPath === translatePath('/') ? 'underline' : ''}>
+        <li class={currentPath === translatePath('/') ? 'active' : ''}>
             <a href={translatePath('/')} class="flex items-center py-2">{t('nav.inicio')}</a>
         </li>
-        <li class={`group ${currentPath === translatePath('/nosotros') ? 'underline' : ''}`}>
+        <li class={`group ${currentPath === translatePath('/nosotros') ? 'active' : ''}`}>
             <a href={translatePath('/nosotros')}
                 class="flex items-center py-2">{t('nav.nosotros')} <svg class="ml-2 w-3 h-3 text-gray-500 transition group-hover:rotate-90" xmlns="http://www.w3.org/2000/svg"
                 width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -68,7 +68,7 @@ console.log('pathname', pathname);
                     </li>
                 </ul>
         </li>
-        <li class={currentPath === translatePath('/que-hacemos') ? 'active' : ''}>
+        <li class={currentPath === '/es/que-hacemos' ? 'active' : ''}>
             {console.log('Que carajos pasa??', currentPath)}
             <a href={translatePath('/que-hacemos')}
                 class="block py-2">{t('nav.que-hacemos')}</a>
