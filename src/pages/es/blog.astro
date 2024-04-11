@@ -21,7 +21,7 @@ const allBlogPostsEs = await getCollection('blog', ({id}) => {
 					month: "short",
 					day: "numeric"
 				})}
-				href={`${post.slug}/`}
+				href={`./blog/${post.slug}/`}
 			/>
 		))
 	}
