@@ -2,14 +2,15 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import alpinejs from "@astrojs/alpinejs";
-
 import react from "@astrojs/react";
 
 //import cloudflare from "@astrojs/cloudflare";
 
+import vercel from "@astrojs/vercel/serverless";
+
 // https://astro.build/config
 export default defineConfig({
-  //output: "hybrid",
+  output: "hybrid",
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
@@ -21,6 +22,8 @@ export default defineConfig({
     }
   },
   integrations: [tailwind(), icon(), alpinejs(), react()],
-  redirect: {},
+  redirect: {}
   //adapter: cloudflare()
+  ,
+  adapter: vercel()
 });
