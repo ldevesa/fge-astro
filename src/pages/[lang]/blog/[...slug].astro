@@ -2,16 +2,16 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-interface Props {
+/* interface Props {
     post: any;
-}
+} */
 
 export async function getStaticPaths() {
   const posts = await getCollection<'blog'>('blog');
 
-  const paths =  posts.map(post => {
+  const paths =  posts && posts.map(post => {
     const [lang, ...slug] = post.slug.split('/');
-    console.log('lang + slug', [lang, ...slug]);
+    //console.log('lang + slug', [lang, ...slug]);
     
     return {
       //params: { lang, slug: slug.join('/') || undefined },

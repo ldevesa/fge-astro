@@ -1,7 +1,11 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import { type CollectionEntry } from 'astro:content';
 import { getLangFromUrl } from '../i18n/utils';
 import Header from "../components/Header.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+const {} = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 

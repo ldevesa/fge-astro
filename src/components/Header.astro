@@ -10,13 +10,12 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 let currentPath = Astro.url.pathname;
-console.log('currentPath', currentPath);
+//console.log('currentPath', currentPath);
 
 const pathname = new URL(Astro.request.url).pathname;
-console.log('pathname', pathname);
-//const currentPath2 = pathname.slice(1); // remove the first "/"
-//console.log('currentPath2', currentPath2);
-//console.log('translatePath', translatePath('/nosotros'));
+//console.log('pathname', pathname);
+
+
 ---
 
 <nav class="relative px-4 py-2 flex justify-end items-center bg-white border-b-2  z-30">
@@ -46,7 +45,7 @@ console.log('pathname', pathname);
     <ul 
         class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
 
-        <li id={currentPath === translatePath('/') ? 'active' : ''}>
+        <li id={currentPath === translatePath('/') ? 'active' : ''} data-nav={t('nav.inicio')}>
             <a href={translatePath('/')}
                 class="block py-2 pl-3 pr-4 lg:p-0 text-gray-700"
                 aria-current="page">{t('nav.inicio')}</a>

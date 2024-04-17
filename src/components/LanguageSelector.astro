@@ -2,13 +2,16 @@
 import { languages } from '../i18n/ui';
 import { getLangFromUrl, getRouteFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
+
+
 const lang = getLangFromUrl(Astro.url);
-console.log('Lenguaje', lang);
-//const t = useTranslations(lang);
+const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
+
 const route = getRouteFromUrl(Astro.url);
-console.log('Ruta', route);
+
+
 
 // current path
 /* const currentPath =  Astro.url.pathname;
@@ -33,19 +36,31 @@ const actualCompleto = actualBlog +'/'+ lang + '/' + actualPost;
 console.log('actualCompleto', actualCompleto); */
 
 
+
 function actualizarURL(lang) {
-    const actual = Astro.url.pathname;
+    const actual = Astro.url.href;
     const partes = actual.split('/');
-    const parteBlog = partes.slice(2, -2).join('/');
-    const partePost = partes.slice(4).join('/');
+    const parteBlog = partes.slice(4, -2).join('/');
+    const partePost = partes.slice(6).join('/');
     const actualCompleto = `${parteBlog}/${lang}/${partePost}`;
     return actualCompleto;
 }
 
-// const nuevaURL = actualizarURL(lang);
-// console.log('Nueva URL:', nuevaURL);
-    
+const nuevaURL = actualizarURL(lang);
+console.log("nuevaURL", nuevaURL);
 
+const ahora = Astro.url.pathname;
+console.log("ahora", ahora);
+
+let newRoute;
+if(`/${lang}/${nuevaURL}` === Astro.url.pathname) {
+    newRoute = `${nuevaURL}`;
+} else {
+    newRoute = '';
+}
+
+
+// href={translatePath(`/${route !== undefined ? route : ''}`, lang)}
 ---
 
 
@@ -63,22 +78,26 @@ function actualizarURL(lang) {
         <!-- Dropdown menu -->
         <div class="absolute right-0 w-20 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
             <div class="py-1">
+                <ul>
                 {Object.entries(languages).map(([lang, label]) => (
-                    <ul>
+                    
                         <li>
                             <a 
                             id="cambiaContenido"
-                            href={translatePath(`/${route !== undefined || route === '/es' || route === '/en' ? route : actualizarURL(lang)}`, lang)}
+                            href={translatePath(`/${route !== undefined ? route : newRoute}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>
-                    </ul>
+                    
                 ))}
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-
+    const elementoLi: string | any = document.querySelector('li');
+    const valor = elementoLi.getAttribute('data-value');
+    console.log('valor', valor);
 </script>
