@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 
   const paths =  posts && posts.map(post => {
     const [lang, ...slug] = post.slug.split('/');
-    //console.log('lang + slug', [lang, ...slug]);
+    console.log('lang + slug', [lang, ...slug]);
     
     return {
       //params: { lang, slug: slug.join('/') || undefined },

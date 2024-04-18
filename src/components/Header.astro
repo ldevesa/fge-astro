@@ -12,7 +12,7 @@ const translatePath = useTranslatedPath(lang);
 let currentPath = Astro.url.pathname;
 //console.log('currentPath', currentPath);
 
-const pathname = new URL(Astro.request.url).pathname;
+//const pathname = new URL(Astro.request.url).pathname;
 //console.log('pathname', pathname);
 
 
@@ -194,7 +194,7 @@ function setupSidebar() {
     const sidebar: any = document.getElementById('sidebar');
     const openSidebarButton: any = document.getElementById('open-sidebar');
 
-    openSidebarButton.addEventListener('click', (event) => {
+    openSidebarButton.addEventListener('click', (event: any) => {
         event.stopPropagation();
         sidebar.classList.toggle('-translate-x-full');
     });
@@ -202,7 +202,7 @@ function setupSidebar() {
     //console.log('Verificando funcionamiento del script en header')
 
     // Función para cerrar la barra lateral si se hace clic fuera de ella
-    function closeSidebarOnClickOutside(event) {
+    function closeSidebarOnClickOutside(event: any) {
         // Obtener la referencia al elemento HTML con Alpine.js
         const nav = document.querySelector('[x-data]');
         // Verificar si el clic no ocurrió en la barra lateral ni en el botón de abrir la barra lateral

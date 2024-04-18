@@ -1,17 +1,15 @@
 ---
 import { languages } from '../i18n/ui';
-import { getLangFromUrl, getRouteFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import { getLangFromUrl, getRouteFromUrl, useTranslatedPath } from '../i18n/utils';
 
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const lang: any = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-
 
 const route = getRouteFromUrl(Astro.url);
 
 
-function actualizarURL(lang) {
+function actualizarURL(lang: any) {
     const actual = Astro.url.href;
     const partes = actual.split('/');
     const parteBlog = partes.slice(4, -2).join('/');
@@ -24,7 +22,7 @@ const nuevaURL = actualizarURL(lang);
 console.log("nuevaURL", nuevaURL);
 console.log('actualizarURL', actualizarURL(lang));
 
-function rutaUndefined(lang) {
+function rutaUndefined(lang: any) {
     if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
         console.log('actualizarURL2', actualizarURL(lang));
         return actualizarURL(lang);
