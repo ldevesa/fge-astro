@@ -36,7 +36,7 @@ function rutaUndefined(lang: any) {
             return '';
         }
     } else {
-        if(Astro.url.pathname === '/es/') {
+        if(Astro.url.pathname && '/es/') {
             return 'HOLA';
         } else {
             return '';
