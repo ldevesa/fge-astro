@@ -3,6 +3,14 @@ import { languages } from '../i18n/ui';
 import { getLangFromUrl, getRouteFromUrl, useTranslatedPath } from '../i18n/utils';
 
 
+const isProduction = import.meta.env.PROD;
+const isDev = import.meta.env.DEV;
+const isPathname = import.meta.env.CONDITION_PATHNAME;
+const isPathname2 = import.meta.env.CONDITION_PATHNAME_2;
+
+console.log('env', process.env.BASE_URL);
+
+
 const lang: any = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 
@@ -22,14 +30,18 @@ const nuevaURL = actualizarURL(lang);
 console.log("nuevaURL", nuevaURL);
 console.log('actualizarURL', actualizarURL(lang));
 
+
 function rutaUndefined(lang: any) {
-    if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
-        console.log('actualizarURL2', actualizarURL(lang));
+    if(Astro.url.pathname === `/es/${actualizarURL(lang)}` || Astro.url.pathname === `/en/${actualizarURL(lang)}`) {
+        console.log('actualizarURL2', Astro.url.pathname === `/es/${actualizarURL(lang)}` || Astro.url.pathname === `/en/${actualizarURL(lang)}`);
         return actualizarURL(lang);
     } else {
         return '';
     }
 }
+
+
+
 
 // href={translatePath(`/${route !== undefined ? route : ''}`, lang)}
 ---
