@@ -109,7 +109,7 @@ const pathname = new URL(Astro.request.url).pathname;
     <nav class="min-h-screen bg-white max-w-sm py-6 px-6 border-r">
 
         <div class="flex items-center mb-8">
-        <a class="mr-auto text-black text-cyan-600 "
+        <a class="mr-auto text-black"
             href="/">
             <Image src={fgeNewLogo} alt='Fundación Gestionar Esperanzas' />
         </a>
@@ -163,14 +163,14 @@ const pathname = new URL(Astro.request.url).pathname;
         <ul class="absolute inset-x-6 bottom-0">
 
             <li>
-                <a class="block py-1.5 px-3 m-1 text-center bg-lime-700 border rounded-md text-white  hover:bg-lime-500 hover:text-gray-100 px-4 py-3 mb-2 text-xs text-center text-white font-semibol rounded-xl"
+                <a class="block py-1.5 px-3 m-1 text-center bg-lime-700 border rounded-md text-white  hover:bg-lime-500 hover:text-gray-100 mb-2 text-xs font-semibol"
                 href="https://api.whatsapp.com/send/?phone=5491168800674&text&type=phone_number&app_absent=0" target="_blank">
                     <Icon name="mdi:whatsapp" style="width: 2.1rem; height: 2.1rem; display: inline-block;" /> Whatsapp
                 </a>
             </li>
 
             <li>
-                <a class="block py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black  hover:bg-gray-100 px-4 py-3 mb-3 text-sm text-center font-semibold rounded-xl"
+                <a class="block py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black  hover:bg-gray-100 mb-3 text-sm font-semibold"
                     href="https://donaronline.org/fundacion-gestionar-esperanzas/fundacion-gestionar-esperanzas-argentina" target="_blank">
                     Donar
                 </a>
@@ -199,7 +199,7 @@ function setupSidebar() {
         sidebar.classList.toggle('-translate-x-full');
     });
 
-    console.log('Verificando funcionamiento del script en header')
+    //console.log('Verificando funcionamiento del script en header')
 
     // Función para cerrar la barra lateral si se hace clic fuera de ella
     function closeSidebarOnClickOutside(event) {
