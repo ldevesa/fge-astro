@@ -11,7 +11,7 @@ const translatePath = useTranslatedPath(lang);
 const route = getRouteFromUrl(Astro.url);
 
 
-function actualizarURL(lang) {
+/* function actualizarURL(lang) {
     const actual = Astro.url.href;
     const partes = actual.split('/');
     const parteBlog = partes.slice(4, -2).join('/');
@@ -32,7 +32,7 @@ function rutaUndefined(lang) {
         return '';
     }
 }
-
+ */
 // href={translatePath(`/${route !== undefined ? route : ''}`, lang)}
 ---
 
@@ -57,7 +57,7 @@ function rutaUndefined(lang) {
                         <li>
                             <a 
                             id="cambiaContenido"
-                            href={translatePath(`/${route !== undefined ? route : rutaUndefined(lang)}`, lang)}
+                            href={translatePath(`/${route !== undefined ? route : ''}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>
