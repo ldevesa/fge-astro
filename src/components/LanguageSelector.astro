@@ -3,38 +3,12 @@ import { languages } from '../i18n/ui';
 import { getLangFromUrl, getRouteFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 
 
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 
 const route = getRouteFromUrl(Astro.url);
-
-
-
-// current path
-/* const currentPath =  Astro.url.pathname;
-console.log('Current Path', currentPath);
-
-const partes = currentPath.split('/');
-console.log('partes', partes);
-
-const parteBlog = partes.slice(2, -3);
-console.log('parteBlog', parteBlog);
-
-const partePost = partes.slice(4, -1);
-console.log('partePost', partePost);
-
-const actualBlog = parteBlog.join('/'); 
-console.log('actualBlog', actualBlog);
-
-const actualPost = partePost.join('/'); 
-console.log('actualPost', actualPost);
-
-const actualCompleto = actualBlog +'/'+ lang + '/' + actualPost;
-console.log('actualCompleto', actualCompleto); */
-
 
 
 function actualizarURL(lang) {
@@ -48,17 +22,16 @@ function actualizarURL(lang) {
 
 const nuevaURL = actualizarURL(lang);
 console.log("nuevaURL", nuevaURL);
+console.log('actualizarURL', actualizarURL(lang));
 
-const ahora = Astro.url.pathname;
-console.log("ahora", ahora);
-
-let newRoute;
-if(`/${lang}/${nuevaURL}` === Astro.url.pathname) {
-    newRoute = `${nuevaURL}`;
-} else {
-    newRoute = '';
+function rutaUndefined(lang) {
+    if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
+        console.log('actualizarURL2', actualizarURL(lang));
+        return actualizarURL(lang);
+    } else {
+        return '';
+    }
 }
-
 
 // href={translatePath(`/${route !== undefined ? route : ''}`, lang)}
 ---
@@ -84,7 +57,7 @@ if(`/${lang}/${nuevaURL}` === Astro.url.pathname) {
                         <li>
                             <a 
                             id="cambiaContenido"
-                            href={translatePath(`/${route !== undefined ? route : newRoute}`, lang)}
+                            href={translatePath(`/${route !== undefined ? route : rutaUndefined(lang)}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>
