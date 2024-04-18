@@ -33,14 +33,17 @@ console.log('actualizarURL', actualizarURL(lang));
 
 function rutaUndefined(lang: any) {
     //if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
-    if(nuevaURL === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
-        console.log('actualizarURL2', Astro.url.pathname === `/es/${actualizarURL(lang)}` || Astro.url.pathname === `/en/${actualizarURL(lang)}`);
+    if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname == `/en/${nuevaURL}`) {
+        console.log('actualizarURL2', Astro.url.pathname === `/${lang}/${nuevaURL}`);
+        console.log('mmm', `/${lang}/${nuevaURL}`);
         return actualizarURL(lang);
     } else {
         return '';
     }
 }
 
+
+console.log('isDev', isDev ? rutaUndefined(lang) : actualizarURL(lang));
 
 
 
@@ -68,7 +71,7 @@ function rutaUndefined(lang: any) {
                         <li>
                             <a 
                             id="cambiaContenido"
-                            href={translatePath(`/${route !== undefined ? route : rutaUndefined(lang)}`, lang)}
+                            href={translatePath(`/${route !== undefined ? route : (isDev ? rutaUndefined(lang) : actualizarURL(lang))}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>
