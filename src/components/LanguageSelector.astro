@@ -27,8 +27,8 @@ function actualizarURL2(lang) {
     const partePost = urlPartes.slice(6).join('/');
     const nuevaURL = `${parteBlog}/${lang}/${partePost}`;
 
-    if(nuevaURL.includes('/es//es/')) return '/es/';
-    if(nuevaURL.includes('/en//en/')) return '/en/';
+    if(nuevaURL == '/es//es/') return '/es/';
+    if(nuevaURL == '/en//en/') return '/en/';
     
     return nuevaURL;
 }
