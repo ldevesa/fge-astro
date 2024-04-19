@@ -21,6 +21,14 @@ const route = getRouteFromUrl(Astro.url);
     return nuevaURL;
 }
 
+function actualizarURL2() {
+    const urlPartes = Astro.url.href.split('/');
+    const parteBlog = urlPartes.slice(4, -2).join('/');
+    const partePost = urlPartes.slice(6).join('/');
+    const nuevaURL = `${parteBlog}/${partePost}`;
+    return nuevaURL;
+}
+
 const nuevaURL = actualizarURL(lang);
 
 function rutaUndefined(lang: string) {
@@ -33,7 +41,7 @@ function rutaUndefined(lang: string) {
     } else {
         // {Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`  ? 'HOLA' : ''}
         if(true) {
-            return nuevaURL;
+            return actualizarURL2();
         } else {
             return '';
         }
