@@ -92,9 +92,9 @@ function rutaUndefined(lang: string) {
                 {Object.entries(languages).map(([lang, label]) => (
                     
                         <li>
-                            <a class=
+                            <a
                             id="cambiaContenido"
-                            href={ (Astro.url.pathname == "/"+lang+"/")? '/'+lang+'/' : translatePath(`/${route !== undefined ? route :  rutaUndefined(lang)}`, lang)}
+                            href={ (Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/' :translatePath(`/${route !== undefined ? route :  rutaUndefined(lang)}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>
