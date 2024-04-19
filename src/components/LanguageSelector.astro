@@ -13,7 +13,7 @@ const translatePath = useTranslatedPath(lang);
 const route = getRouteFromUrl(Astro.url);
 
 
- function actualizarURL(lang: string): string {
+ function actualizarURL(lang: string) {
     const urlPartes = Astro.url.href.split('/');
     const parteBlog = urlPartes.slice(4, -2).join('/');
     const partePost = urlPartes.slice(6).join('/');
@@ -23,8 +23,7 @@ const route = getRouteFromUrl(Astro.url);
 
 const nuevaURL = actualizarURL(lang);
 
-function rutaUndefined(lang: any) {
-    console.log('Astro.url.pathname:', Astro.url.pathname);
+function rutaUndefined(lang: string) {
     if(isDev) {
         if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
             return actualizarURL(lang);
@@ -32,11 +31,12 @@ function rutaUndefined(lang: any) {
             return '';
         }
     } else {
-        if(`/blog/`) {
+        Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}` ? 'HOLA' : ''
+        /* if(false) {
             return 'HOLA';
         } else {
             return '';
-        }
+        } */
     }
 
 }
