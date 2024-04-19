@@ -41,12 +41,17 @@ function rutaUndefined(lang: string) {
             return '';
         }
     } else {
+
+        console.log(Astro.url.pathname );
         // {Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`  ? 'HOLA' : ''}
         if(true) {
             return actualizarURL2(lang);
         } else {
             return '';
         }
+
+
+
     }
 
 }
