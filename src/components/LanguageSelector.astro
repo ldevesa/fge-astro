@@ -12,65 +12,6 @@ const translatePath = useTranslatedPath(lang);
 
 const route = getRouteFromUrl(Astro.url);
 
-
- function actualizarURL(lang: string) {
-    const urlPartes = Astro.url.href.split('/');
-    const parteBlog = urlPartes.slice(4, -2).join('/');
-    const partePost = urlPartes.slice(6).join('/');
-    const nuevaURL = `${parteBlog}/${lang}/${partePost}`;
-    return nuevaURL;
-}
-
-function actualizarURL2(lang) {
-    const urlPartes = Astro.url.href.split('/');
-    const parteBlog = urlPartes.slice(4, -3).join('/');
-    const partePost = urlPartes.slice(6).join('/');
-    const nuevaURL = `${parteBlog}/${lang}/${partePost}`;
-
-    if(nuevaURL == '/es//es/') return '/es/';
-    if(nuevaURL == '/en//en/') return '/en/';
-    
-    return nuevaURL;
-}
-
-const nuevaURL = actualizarURL(lang);
-const nuevaURL2 = actualizarURL2(lang);
-console.log('fff', nuevaURL2);
-
-function rutaUndefined(lang: string) {
-
-    if(isDev) {
-        if(Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`) {
-            return actualizarURL(lang);
-        } else {
-            return '';
-        }
-    } else {
-
-
-        // {Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`  ? 'HOLA' : ''}
-        /*
-        if(true) {
-            return actualizarURL2(lang);
-        } else {
-            return '';
-        }
-        */
-        
-        return actualizarURL2(lang);
-
-
-    }
-
-}
-
-
-
-//console.log('isDev', isDev ? rutaUndefined(lang) : actualizarURL(lang));
-
-
-
-// href={translatePath(`/${route !== undefined ? route : ''}`, lang)}
 ---
 
 
@@ -94,7 +35,7 @@ function rutaUndefined(lang: string) {
                         <li>
                             <a
                             id="cambiaContenido"
-                            href={ (Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/' :translatePath(`/${route !== undefined ? route :  rutaUndefined(lang)}`, lang)}
+                            href={(Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/' : translatePath(`/${route !== undefined ? route : 'blog/' + Astro.url.pathname.split('/').slice(3).join('/')}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>

@@ -9,16 +9,15 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const posts = await getCollection<'blog'>('blog');
 
-  const paths =  posts && posts.map(post => {
+  const paths = posts.map(post => {
     const [lang, ...slug] = post.slug.split('/');
-    console.log('lang + slug', [lang, ...slug]);
     
     return {
-      //params: { lang, slug: slug.join('/') || undefined },
-      //props: { post }
-      params: { lang, slug: post.slug || undefined },
-      props: { post } 
-    }
+      params: { lang, slug: slug.join('/') || undefined },
+      props: post 
+      //params: { lang, slug: post.slug || undefined },
+      //props:  post  
+    };
   });
   
   return paths;
@@ -27,7 +26,7 @@ export async function getStaticPaths() {
 
 
 const { lang, slug } = Astro.params;
-const { post } = Astro.props;
+const post = Astro.props;
 const formattedDate = post.data.publishDate.toLocaleDateString(lang, {
 					year: "numeric",
 					month: "short",
