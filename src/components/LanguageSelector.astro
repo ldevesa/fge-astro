@@ -21,11 +21,7 @@ const route = getRouteFromUrl(Astro.url);
     return nuevaURL;
 }
 
-
 const nuevaURL = actualizarURL(lang);
-console.log("nuevaURL", nuevaURL);
-console.log('actualizarURL', actualizarURL(lang));
-
 
 function rutaUndefined(lang: any) {
     console.log('Astro.url.pathname:', Astro.url.pathname);
@@ -36,18 +32,20 @@ function rutaUndefined(lang: any) {
             return '';
         }
     } else {
-        if(Astro.url.pathname !== Astro.url.pathname) {
+        /* if(Astro.url.pathname !== window.location.pathname) {
             return 'HOLA';
         } else {
             return '';
-        }
+        } */
+        { `/es/${nuevaURL}` && actualizarURL(lang) }
+        { `/en/${nuevaURL}` && actualizarURL(lang) }
     }
 
 }
 
 
 
-console.log('isDev', isDev ? rutaUndefined(lang) : actualizarURL(lang));
+//console.log('isDev', isDev ? rutaUndefined(lang) : actualizarURL(lang));
 
 
 
