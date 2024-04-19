@@ -4,12 +4,11 @@ import { getLangFromUrl, getRouteFromUrl, useTranslatedPath } from '../i18n/util
 
 
 //const isProduction = import.meta.env.PROD;
-const isDev = import.meta.env.DEV;
+//const isDev = import.meta.env.DEV;
 
 
-const lang: any = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
-
 const route = getRouteFromUrl(Astro.url);
 
 ---
