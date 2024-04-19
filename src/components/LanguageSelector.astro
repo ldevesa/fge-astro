@@ -31,12 +31,13 @@ function rutaUndefined(lang: string) {
             return '';
         }
     } else {
-        {Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`  ? 'HOLA' : ''}
+        // {Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`  ? 'HOLA' : ''}
         /* if(false) {
             return 'HOLA';
         } else {
             return '';
         } */
+        actualizarURL(lang);
     }
 
 }
