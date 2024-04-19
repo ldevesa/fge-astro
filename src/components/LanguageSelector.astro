@@ -32,12 +32,12 @@ function rutaUndefined(lang: string) {
         }
     } else {
         // {Astro.url.pathname === `/es/${nuevaURL}` || Astro.url.pathname === `/en/${nuevaURL}`  ? 'HOLA' : ''}
+        route !== undefined ? route : actualizarURL(lang);
         /* if(false) {
             return 'HOLA';
         } else {
             return '';
         } */
-        actualizarURL(lang);
     }
 
 }
