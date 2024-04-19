@@ -27,8 +27,8 @@ function actualizarURL2(lang) {
     const partePost = urlPartes.slice(6).join('/');
     const nuevaURL = `${parteBlog}/${lang}/${partePost}`;
 
-    if(Astro.currentLocale == 'es' && Astro.url.pathname.includes('/es//es/')) return '/es/';
-    if(Astro.currentLocale == 'en' && Astro.url.pathname.includes('/en//en/')) return '/en/';
+    if(nuevaURL.includes('/es//es/')) return '/es/';
+    if(nuevaURL.includes('/en//en/')) return '/en/';
     
     return nuevaURL;
 }
