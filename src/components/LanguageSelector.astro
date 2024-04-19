@@ -13,14 +13,14 @@ const translatePath = useTranslatedPath(lang);
 const route = getRouteFromUrl(Astro.url);
 
 
-function actualizarURL(lang: any) {
-    const actual = Astro.url.href;
-    const partes = actual.split('/');
-    const parteBlog = partes.slice(4, -2).join('/');
-    const partePost = partes.slice(6).join('/');
-    const actualCompleto = `${parteBlog}/${lang}/${partePost}`;
-    return actualCompleto;
+ function actualizarURL(lang: string): string {
+    const urlPartes = Astro.url.href.split('/');
+    const parteBlog = urlPartes.slice(4, -2).join('/');
+    const partePost = urlPartes.slice(6).join('/');
+    const nuevaURL = `${parteBlog}/${lang}/${partePost}`;
+    return nuevaURL;
 }
+
 
 const nuevaURL = actualizarURL(lang);
 console.log("nuevaURL", nuevaURL);
@@ -36,7 +36,7 @@ function rutaUndefined(lang: any) {
             return '';
         }
     } else {
-        if(Astro.url.pathname && actualizarURL(lang)) {
+        if(Astro.url.pathname !== Astro.url.pathname) {
             return 'HOLA';
         } else {
             return '';
@@ -44,6 +44,7 @@ function rutaUndefined(lang: any) {
     }
 
 }
+
 
 
 console.log('isDev', isDev ? rutaUndefined(lang) : actualizarURL(lang));
