@@ -8,8 +8,8 @@ const allBlogPostsEs = await getCollection('blog', ({id}) => {
 });
 ---
 
-<BlogLayout>
-    <h1>Bienvenido a <span class="text-gradient">Notas</span></h1>
+
+<BlogLayout title="Estas son las Noticias">
 	{
 		allBlogPostsEs.map((post) => (
 			<Card 

@@ -10,8 +10,7 @@ const allBlogPostsEn = await getCollection('blog', ({id}) => {
 
 ---
 
-<BlogLayout>
-    <h1>Bienvenido a <span class="text-gradient">Posts</span></h1>
+<BlogLayout title="This is a posts">
 	{
 		allBlogPostsEn && allBlogPostsEn.map((post) => (
 			<Card 
