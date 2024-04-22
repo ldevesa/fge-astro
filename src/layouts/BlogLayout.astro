@@ -16,7 +16,7 @@ const {title} = Astro.props;
 <!DOCTYPE html>
 <html lang={lang}>
 	<head>
-		<BaseHead />
+		<BaseHead title='Blog' description='Notas de la fundación' />
 	</head>
 <body>
 
@@ -42,13 +42,23 @@ const {title} = Astro.props;
             // @ts-ignore
             let search = new PagefindUI({ 
                 element: "#search", 
-                showSubResults: true
+				debounceTimeoutMs: 500,
+				pageSize: 1,
+				excerptLength: 15,
+                showSubResults: true,
+				showImages: true,
+				sort: { date: "desc" }
             });
             search.destroy();
             // @ts-ignore
             search = new PagefindUI({ 
                 element: "#search", 
-                showSubResults: true
+				debounceTimeoutMs: 500,
+				pageSize: 1,
+				excerptLength: 15,
+                showSubResults: true,
+				showImages: true,
+				sort: { date: "desc" }
             });
         });
     </script>
@@ -56,11 +66,11 @@ const {title} = Astro.props;
 </body>
 </html>
 
-<style>
-	body {
+<style is:global>
+	:root {
 		--pagefind-ui-scale: .7;
 		--pagefind-ui-primary: #034ad8;
-		--pagefind-ui-text: #393939;
+		--pagefind-ui-text: #ce3636;
 		--pagefind-ui-background: #ffffff;
 		--pagefind-ui-border: #eeeeee;
 		--pagefind-ui-tag: #eeeeee;

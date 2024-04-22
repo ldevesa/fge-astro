@@ -1,1 +1,0 @@
-import"./hoisted.C2mrDoZc.js";document.addEventListener("astro:page-load",()=>{let e=new PagefindUI({element:"#search",showSubResults:!0});e.destroy(),e=new PagefindUI({element:"#search",showSubResults:!0})});
