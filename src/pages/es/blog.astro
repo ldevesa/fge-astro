@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 import { getCollection } from 'astro:content';
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const allBlogPostsEs = await getCollection('blog', ({id}) => {
 	return id.startsWith('es/')
 });
 ---
 
-<BaseLayout>
+<BlogLayout>
     <h1>Bienvenido a <span class="text-gradient">Notas</span></h1>
 	{
 		allBlogPostsEs.map((post) => (
@@ -21,12 +21,11 @@ const allBlogPostsEs = await getCollection('blog', ({id}) => {
 					month: "short",
 					day: "numeric"
 				})}
-				href={`./blog/${post.slug.split('/').slice(1).join('/')}`}
+				href={`./blog/${post.slug.split('/')[1]}`}
 			/>
 		))
 	}
-</BaseLayout>
-
+</BlogLayout>
 
 <style>
 	h1 {

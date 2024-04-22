@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && pagefind --site .vercel/output/static",
+    "pagefind": "xcopy /E /I .vercel\\output\\static\\pagefind public\\pagefind",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.64",
     "@iconify/tailwind": "^0.1.4",
-    "astro-icon": "^1.1.0"
+    "astro-icon": "^1.1.0",
+    "pagefind": "^1.1.0"
   }
 }
