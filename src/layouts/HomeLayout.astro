@@ -25,3 +25,25 @@ const lang = getLangFromUrl(Astro.url);
 
 </body>
 </html>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+	import gsap from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import Lenis from 'lenis';
+
+    // smooth scroll
+    const lenis = new Lenis();
+
+    lenis.on('scroll', (e:any) => {
+        console.log(e);
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time)=>{
+        lenis.raf(time * 500)
+    });
+
+    gsap.ticker.lagSmoothing(0);
+</script>
