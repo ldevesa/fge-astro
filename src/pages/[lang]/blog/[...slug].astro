@@ -33,11 +33,11 @@ const { Content } = await post.render();
 ---
 
 <BaseLayout>
-    <article class="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16">
+    <article data-pagefind-body class="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16">
 
         <section class="mb-10 rounded overflow-hidden flex flex-col mx-auto text-center">
 
-            <h2 class="max-w-3xl mx-auto text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">{post.data.title}</h2>
+            <h2 data-pagefind-meta="title" class="max-w-3xl mx-auto text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out mb-2">{post.data.title}</h2>
 
         
             <img class="w-full my-4"

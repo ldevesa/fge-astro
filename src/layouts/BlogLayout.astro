@@ -22,15 +22,19 @@ const {title} = Astro.props;
 
     <Header />
 
-    <main  data-pagefind-ignore>
+    <main data-pagefind-ignore class="container mx-auto py-10">
 
-		<div id="search"></div>
-
-		<h1><span class="text-gradient">{title}</span></h1>
+		<section id="search" class="w-full mx-auto">
+			<div id="search"></div>
+		</section>
+		
+		<section id="title" class="w-full mx-auto pt-10">
+			<h1 class="text-gradient">{title}</h1>
+		</section>
 
 		<!-- ✅ Grid Section - Starts Here 👇 -->
-		<section id="Projects"
-		class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+		<section id="posts"
+		class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
 			<slot />
 		</section>
 
@@ -42,7 +46,6 @@ const {title} = Astro.props;
             // @ts-ignore
             let search = new PagefindUI({ 
                 element: "#search", 
-				debounceTimeoutMs: 500,
 				pageSize: 1,
 				excerptLength: 15,
                 showSubResults: true,
@@ -53,7 +56,6 @@ const {title} = Astro.props;
             // @ts-ignore
             search = new PagefindUI({ 
                 element: "#search", 
-				debounceTimeoutMs: 500,
 				pageSize: 1,
 				excerptLength: 15,
                 showSubResults: true,

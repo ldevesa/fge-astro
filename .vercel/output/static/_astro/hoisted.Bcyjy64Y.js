@@ -1,1 +1,0 @@
-import"./hoisted.C2mrDoZc.js";document.addEventListener("astro:page-load",()=>{let e=new PagefindUI({element:"#search",debounceTimeoutMs:500,pageSize:1,excerptLength:15,showSubResults:!0,showImages:!0,sort:{date:"desc"}});e.destroy(),e=new PagefindUI({element:"#search",debounceTimeoutMs:500,pageSize:1,excerptLength:15,showSubResults:!0,showImages:!0,sort:{date:"desc"}})});
