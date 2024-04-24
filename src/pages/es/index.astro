@@ -1,18 +1,15 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
-import { SliderHome } from "../../components/slider-home";
 import ScrollBox from '../../components/ScrollBox.astro';
-
-
+import SliderHome from '../../components/SliderHome.astro';
 ---
 
 <HomeLayout>
-	<SliderHome 
-	client:only="react" 
-	title="Tu tiempo y dedicación pueden cambiar su futuro"
-	description="Tu tiempo puede cambiar su futuro. Sé parte de un equipo comprometido con la educación, brinda apoyo escolar a los niños que más 10 necesitan."
-	button="Quiero ser voluntario >"
-	/>
-	<ScrollBox />
-</HomeLayout>
 
+
+	<SliderHome />
+
+	<ScrollBox />
+
+
+</HomeLayout>

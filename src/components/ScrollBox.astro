@@ -2,7 +2,6 @@
 
 
 ---
-<div style="position:relative;">
 <div id="gallery" class="flex">
 	<div id="left" class="hidden md:block md:w-1/2 lg:w-1/2">
 		<div id="desktopContent" class="m-auto">
@@ -68,7 +67,7 @@
 
 	</div>
 </div>
-</div>
+
 
 <style>
 .desktopContentSection {
@@ -110,8 +109,10 @@
 </style>
 
 <script>
+	//gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
 	import gsap from "gsap";
+	//import { useGSAP } from "@gsap/react";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 	// Ejecutar la función setupSidebar() cada vez que ocurre una transición de página
@@ -166,6 +167,5 @@
 		});
 
 	});
-  
 
 </script>
