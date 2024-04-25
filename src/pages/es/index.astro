@@ -8,7 +8,15 @@ import {SliderHome} from '../../components/slider-home';
 
 <HomeLayout>
 
-	<SliderHome client:load title ='Contamos con vos para abrigar nuestro futuro' description ='Te invitamos a revisar tus roperos y a donar mantas, frazadas, ropa de abrigo, bufandas y otras prendas y calzados.' button ='QUIERO SER VOLUNTARIO' title2 ='Tu tiempo y dedicación pueden cambiar su futuro' description2 ='Tu tiempo puede cambiar su futuro. Sé parte de un equipo comprometido con la educación, brinda apoyo escolar a los niños que más lo necesitan.' button2 ='QUIERO DONAR' />
+	<SliderHome 
+	client:load 
+	s1_title ='Contamos con vos para abrigar nuestro futuro' 
+	s1_description ='Te invitamos a revisar tus roperos y a donar mantas, frazadas, ropa de abrigo, bufandas y otras prendas y calzados.' 
+	s1_button ='QUIERO SER VOLUNTARIO' 
+	s2_title ='Tu tiempo y dedicación pueden cambiar su futuro' 
+	s2_description ='Tu tiempo puede cambiar su futuro. Sé parte de un equipo comprometido con la educación, brinda apoyo escolar a los niños que más lo necesitan.' 
+	s2_button ='QUIERO DONAR' 
+	/>
 
 	<BreadcrumbsDefault 
 	client:only="react"
@@ -20,7 +28,5 @@ import {SliderHome} from '../../components/slider-home';
 	<MyApp />
 	
 	<ScrollBox />
-
-
 
 </HomeLayout>

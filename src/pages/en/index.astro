@@ -1,14 +1,20 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
-
+import {SliderHome} from '../../components/slider-home';
 
 ---
 
 <HomeLayout>
 
-<h1>
-	Home
-</h1>
+	<SliderHome 
+	client:load 
+	s1_title ='We count on you to protect our future' 
+	s1_description ='We invite you to go through your closets and donate blankets, blankets, warm clothes, scarves and other clothing and shoes.' 
+	s1_button ='I WANT TO BE A VOLUNTEER' 
+	s2_title ='Your time and dedication can change your future' 
+	s2_description ='Your time can change your future. Be part of a team committed to education, providing academic support to the children who need it most.' 
+	s2_button ='I WANT TO DONATE' 
+	/>
 
 </HomeLayout>
 
