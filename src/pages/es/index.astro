@@ -1,15 +1,26 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
 import ScrollBox from '../../components/ScrollBox.astro';
-import SliderHome from '../../components/SliderHome.astro';
+import MyApp from '../../components/react-test';
+import { BreadcrumbsDefault } from '../../components/breadcrumbs';
+import {SliderHome} from '../../components/slider-home';
 ---
 
 <HomeLayout>
 
+	<SliderHome client:load title ='Contamos con vos para abrigar nuestro futuro' description ='Te invitamos a revisar tus roperos y a donar mantas, frazadas, ropa de abrigo, bufandas y otras prendas y calzados.' button ='QUIERO SER VOLUNTARIO' title2 ='Tu tiempo y dedicación pueden cambiar su futuro' description2 ='Tu tiempo puede cambiar su futuro. Sé parte de un equipo comprometido con la educación, brinda apoyo escolar a los niños que más lo necesitan.' button2 ='QUIERO DONAR' />
 
-	<SliderHome />
+	<BreadcrumbsDefault 
+	client:only="react"
+	home= "inicio"
+	page= " "
+	subpage= " "
+	/>
 
+	<MyApp />
+	
 	<ScrollBox />
+
 
 
 </HomeLayout>

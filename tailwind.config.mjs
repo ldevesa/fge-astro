@@ -1,14 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+import flowbite from "flowbite-react/tailwind";
+import withMT from "@material-tailwind/react/utils/withMT";
+
+export default withMT ({
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-		'./node_modules/flowbite/**/*.js',
+		flowbite.content(),
 	],
 	theme: {
 		extend: {},
 	},
 	plugins: [
-		require("daisyui"),
-		require('flowbite/plugin'),
+		flowbite.plugin(),
 	],
-}
+});
