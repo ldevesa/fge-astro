@@ -1,6 +1,10 @@
 import React, { createElement } from 'react';
 import ReactDOM from 'react-dom/server';
 
+const opts = {
+						experimentalReactChildren: false
+					};
+
 const contexts = new WeakMap();
 
 const ID_PREFIX = 'r';
@@ -51,10 +55,6 @@ const StaticHtml = ({ value, name, hydrate = true }) => {
  * See https://preactjs.com/guide/v8/external-dom-mutations
  */
 StaticHtml.shouldComponentUpdate = () => false;
-
-const opts = {
-						experimentalReactChildren: false
-					};
 
 const slotName = (str) => str.trim().replace(/[-_]([a-z])/g, (_, w) => w.toUpperCase());
 const reactTypeof = Symbol.for('react.element');
