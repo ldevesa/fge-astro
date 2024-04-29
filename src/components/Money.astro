@@ -1,0 +1,31 @@
+---
+
+---
+
+<div class="basis-1/4 container-coin">
+    <img class="coin" src="/images/coin11.webp" alt="">
+</div>
+
+
+
+<style>
+
+</style>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.to(".coin", {
+        scrollTrigger: {
+            trigger: ".containder-coin",
+            scrub: true,
+			start: 'top center',
+            end: '+=2000',
+        },
+        rotation: 1500,
+        ease: "none",
+    });
+	console.log("ScrollTrigger", ScrollTrigger);
+</script>
