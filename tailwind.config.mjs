@@ -8,7 +8,8 @@ export default withMT ({
 		flowbite.content(),
 	],
 	theme: {
-		extend: {},
+		extend: {
+		},
 	},
 	plugins: [
 		flowbite.plugin(),
