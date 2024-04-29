@@ -1,9 +1,22 @@
-import { Carousel } from "flowbite-react";
 
-export function SliderHome(props) {
+"use client";
+
+import type { CustomFlowbiteTheme } from "flowbite-react";
+import { Carousel, Flowbite } from "flowbite-react";
+
+const customTheme: CustomFlowbiteTheme = {
+  carousel: {
+    scrollContainer: {
+      base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-none"
+    },
+  },
+};
+
+export function SliderHome(props:any) {
   return (
     <div className="relative h-72 overflow-hidden md:h-96 lg:h-[32rem]">
-      <Carousel slideInterval={3000} pauseOnHover>
+      <Flowbite theme={{ theme: customTheme }}>
+      <Carousel slideInterval={3000} pauseOnHover className="">
         <div>
           <img src="/images/slider01.jpg" alt="image 1" className="h-full w-full object-cover" />
           <div className="absolute inset-0 grid h-full w-full sm:9/12 md:w-9/12 lg:w-6/12 place-items-center bg-gradient-to-r from-gray-900 via-50% to-transparent">
@@ -33,6 +46,7 @@ export function SliderHome(props) {
             </div>
         </div>
       </Carousel>
+      </Flowbite>
     </div>
   );
 }
