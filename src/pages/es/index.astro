@@ -4,7 +4,7 @@ import ScrollBox from '../../components/ScrollBox.astro';
 import MyApp from '../../components/react-test';
 import { BreadcrumbsDefault } from '../../components/breadcrumbs';
 import {SliderHome} from '../../components/slider-home.tsx';
-import Money from '../../components/Money.astro';
+import Splash from '../../components/Splash.astro';
 
 
 ---
@@ -52,6 +52,9 @@ import Money from '../../components/Money.astro';
 				<div class="flex justify-start gap-2">
 					<a href="#" class="inline-block rounded-lg bg-green-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-green-600 focus-visible:ring active:bg-green-700 md:text-base">Quiero ser voluntario</a>
 				</div>
+
+				<Splash />
+
 			</div>
 		  </div>
 		</div>
@@ -66,3 +69,13 @@ import Money from '../../components/Money.astro';
 
 
 </HomeLayout>
+
+
+<style>
+	.splash {
+		background-image: url('/images/splash.svg');
+		background-repeat: no-repeat;
+		background-size: 5rem;
+		background-position: 75% bottom;
+	}
+</style>

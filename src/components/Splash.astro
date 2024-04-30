@@ -1,0 +1,33 @@
+---
+
+---
+
+<div class="container-splash flex justify-end">
+    <img class="splash" src="/images/splash.svg" alt="" width="70" height="70">
+</div>
+
+
+<style>
+	.splash {
+
+	}
+</style>
+
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.to(".splash", {
+        scrollTrigger: {
+            trigger: ".containder-splash",
+            scrub: true,
+			start: 'top center',
+            end: '+=2000',
+        },
+        rotation: 1500,
+        ease: "none",
+    });
+	console.log("ScrollTrigger", ScrollTrigger);
+</script>
