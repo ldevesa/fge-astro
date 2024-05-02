@@ -19,15 +19,22 @@
     import gsap from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    gsap.to(".splash", {
-        scrollTrigger: {
-            trigger: ".containder-splash",
-            scrub: true,
-			start: 'top center',
-            end: '+=2000',
-        },
-        rotation: 1500,
-        ease: "none",
+    // Ejecutar la función setupSidebar() cada vez que ocurre una transición de página
+	document.addEventListener('astro:page-load', () => {
+
+        gsap.to(".splash", {
+            scrollTrigger: {
+                trigger: ".containder-splash",
+                scrub: true,
+                start: 'top center',
+                end: '+=2000',
+            },
+            rotation: 1500,
+            ease: "none",
+        });
+        console.log("ScrollTrigger", ScrollTrigger);
+
     });
-	console.log("ScrollTrigger", ScrollTrigger);
+
+
 </script>

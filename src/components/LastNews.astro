@@ -1,0 +1,45 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+import Card from "../components/Card.astro";
+import { getCollection } from 'astro:content';
+
+const lang = getLangFromUrl(Astro.url);
+
+let idioma = (Astro.url.pathname == "/es/") ? 'es/' : 'en/';
+
+console.log('idioma', idioma);
+
+
+const allBlogPostsLang = await getCollection('blog', ({id}) => {
+	return id.startsWith(idioma)
+});
+
+---
+<!-- ✅ Grid Section - Starts Here 👇 -->
+<section id="posts"
+class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+
+	{
+		allBlogPostsLang.map((post) => (
+			<Card 
+				title={post.data.title}
+				image={post.data.image}
+				body={post.data.author}
+				date= {post.data.publishDate.toLocaleDateString('en', {
+					year: "numeric",
+					month: "short",
+					day: "numeric"
+				})}
+				href={`./blog/${post.slug.split('/')[1]}`}
+			/>
+		)).slice(0, 2)
+	}
+
+</section>
+
+
+<style>
+	h1 {
+		color: aliceblue;
+	}
+</style>
