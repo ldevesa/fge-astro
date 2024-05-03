@@ -27,15 +27,16 @@ const {title} = Astro.props;
 		<section id="search" class="w-full mx-auto">
 			<div id="search"></div>
 		</section>
-		
-		<section id="title" class="w-full mx-auto pt-10">
-			<h1 class="text-gradient">{title}</h1>
-		</section>
 
 		<!-- ✅ Grid Section - Starts Here 👇 -->
-		<section id="posts"
-		class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-			<slot />
+		<section class="bg-white py-6 sm:py-8 lg:py-12">
+			<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+				<h2 class="mb-8 text-center text-2xl font-bold text-gray-800 md:mb-12 lg:text-3xl">{title}</h2>
+			
+				<div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-3">
+					<slot />
+				</div>
+			</div>
 		</section>
 
     </main>

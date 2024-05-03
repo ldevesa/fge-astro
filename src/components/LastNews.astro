@@ -14,28 +14,49 @@ const allBlogPostsLang = await getCollection('blog', ({id}) => {
 	return id.startsWith(idioma)
 });
 
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+
 ---
+
+
 <!-- ✅ Grid Section - Starts Here 👇 -->
-<section id="posts"
-class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+<div class="bg-white py-6 sm:py-8 lg:py-12">
 
-	{
-		allBlogPostsLang.map((post) => (
-			<Card 
-				title={post.data.title}
-				image={post.data.image}
-				body={post.data.author}
-				date= {post.data.publishDate.toLocaleDateString('en', {
-					year: "numeric",
-					month: "short",
-					day: "numeric"
-				})}
-				href={`./blog/${post.slug.split('/')[1]}`}
-			/>
-		)).slice(0, 2)
-	}
+	<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-</section>
+		<h2 class="mb-8 text-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-500">{title}</h2>
+	
+		<div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-3">
+
+			{
+				allBlogPostsLang.map((post) => (
+					<Card 
+						title={post.data.title}
+						image={post.data.image}
+						body={post.data.author}
+						date= {post.data.publishDate.toLocaleDateString('en', {
+							year: "numeric",
+							month: "short",
+							day: "numeric"
+						})}
+						href={`./blog/${post.slug.split('/')[1]}`}
+					/>
+				)).slice(0, 2)
+			}
+
+		<!-- product - end -->
+		</div>
+
+		<div class=" py-16 flex justify-center">
+			<a href="#" class=" w-1/6 inline-block rounded-[50px] bg-green-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-green-600 focus-visible:ring active:bg-green-700 md:text-base">Ver más</a>
+		</div>
+
+	</div>
+
+</div>
 
 
 <style>

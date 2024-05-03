@@ -4,8 +4,8 @@ import ScrollBox from '../../components/ScrollBox.astro';
 import MyApp from '../../components/react-test';
 import { BreadcrumbsDefault } from '../../components/breadcrumbs';
 import {SliderHome} from '../../components/slider-home.tsx';
-import Splash from '../../components/Splash.astro';
 import LastNews from '../../components/LastNews.astro';
+import ImageGiro from '../../components/ImageGiro.astro';
 
 ---
 
@@ -53,16 +53,26 @@ import LastNews from '../../components/LastNews.astro';
 					<a href="#" class="inline-block rounded-lg bg-green-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-green-600 focus-visible:ring active:bg-green-700 md:text-base">Quiero ser voluntario</a>
 				</div>
 
-				<Splash />
+				<div class="container-giro flex justify-end">
+					<ImageGiro image='/images/splash.svg' width={70} height={70} />
+				</div>
 
 			</div>
 		  </div>
 		</div>
 	</div>
 
+
 	<ScrollBox />
 
-	<LastNews />
+	<div class="container-giro relative z-0">
+		<div class="absolute top-10 left-20">
+			<ImageGiro image='/images/cuad.svg' width={210} height={210} />
+		</div>
+	</div>
+
+	<LastNews title='Noticias' />
+
 
 </HomeLayout>
 
