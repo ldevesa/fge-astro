@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Card from "./Card.astro";
+import Link from "./Link.astro";
+
+/* export type Props = {
+  posts: CollectionEntry<'blog'>[];
+  start?: number;
+}; */
+
+interface Props {
+    posts: CollectionEntry<'blog'>[];
+  start?: number;
+}
+
+const { posts, start = 1 } = Astro.props;
+console.log('Astro.url.pathname', Astro.url.pathname)
+---
+
+<ol class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5" start={start}>
+    {
+        posts.map((post) => (
+        <li>
+        <Link class='flex justify-between' href={`/blog/${post.slug}`}>
+            <Card 
+                title={post.data.title}
+                image={post.data.image}
+                body={post.data.author}
+                date= {post.data.publishDate.toLocaleDateString('en', {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                })}
+                href={`./${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? post.slug.split('/')[1] : 'blog/' + post.slug.split('/')[1]}`}
+            />
+        </Link>
+        </li>
+        ))
+    }
+</ol>

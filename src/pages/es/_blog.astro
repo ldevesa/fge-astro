@@ -3,11 +3,13 @@ import Card from "../../components/Card.astro";
 import { getCollection } from 'astro:content';
 import BlogLayout from "../../layouts/BlogLayout.astro";
 
-const allBlogPostsEs = await getCollection('blog', ({id}) => {
-	return id.startsWith('es/')
-});
----
 
+	const allBlogPostsEs = await getCollection('blog', ({id}) => {
+		return id.startsWith('es/')
+	});
+
+
+---
 
 <BlogLayout title="Estas son las Noticias">
 	{
@@ -25,6 +27,7 @@ const allBlogPostsEs = await getCollection('blog', ({id}) => {
 			/>
 		))
 	}
+
 </BlogLayout>
 
 <style>
