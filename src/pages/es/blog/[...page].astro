@@ -39,7 +39,9 @@ const {page} = Astro.props;
           )
         }
       </div>
+
       {page.currentPage}
+
       <div class='w-24 text-start'>
         {
           page.url.next && (
@@ -49,5 +51,6 @@ const {page} = Astro.props;
           )
         }
       </div>
+      
     </div>
 </BlogLayout>
