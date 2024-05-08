@@ -45,7 +45,7 @@ const { href, image, title, body, date, tags } = Astro.props;
                 {
                     tags.map((tag) => (
                     <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
-					<a href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
+					<a href={`${((Astro.url.pathname !== '/en/' && Astro.url.pathname !== '/en/blog') && (Astro.url.pathname !== '/es/' && Astro.url.pathname !== '/es/blog')) ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
 				  </span>
                     ))
                   }
