@@ -2,6 +2,9 @@
 import BaseHead from '../components/BaseHead.astro';
 import { getLangFromUrl } from '../i18n/utils';
 import Header from "../components/Header.astro";
+import { getAllTags } from "../utils/getAllTags";
+
+const tags = await getAllTags();
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -28,6 +31,18 @@ const {title} = Astro.props;
 			<div id="search"></div>
 		</section>
 
+		<section id="tags">
+
+			{
+				tags.map((tag) => (
+				  <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
+					<a href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
+				  </span>
+				))
+			}
+
+		</section>
+
 		<!-- ✅ Grid Section - Starts Here 👇 -->
 		<section class="bg-white py-6 sm:py-8 lg:py-12">
 
@@ -38,6 +53,7 @@ const {title} = Astro.props;
 			</div>
 
 		</section>
+
 
     </main>
 

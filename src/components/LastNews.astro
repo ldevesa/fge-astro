@@ -33,18 +33,17 @@ const { title } = Astro.props;
 
 			{
 				allBlogPostsLang.map((post) => (
-					<Card 
-						title={post.data.title}
-						image={post.data.image}
-						body={post.data.author}
-						date= {post.data.publishDate.toLocaleDateString('en', {
-							year: "numeric",
-							month: "short",
-							day: "numeric"
-						})}
-						href={`./blog/${post.slug.split('/')[1]}`}
-					/>
-				)).slice(0, 2)
+				<Card 
+					{...post.data} 
+					body={post.data.author}
+					date={post.data.publishDate.toLocaleDateString('en', {
+						year: "numeric",
+						month: "short",
+						day: "numeric"
+					})}
+					href={`./blog/${post.slug.split('/')[1]}`}
+				/>
+				)).slice(0, 3)
 			}
 
 		<!-- product - end -->

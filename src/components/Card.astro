@@ -1,15 +1,21 @@
 ---
-//import type { ImgAttributes } from 'astro:assets';
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, getRouteFromUrl, useTranslatedPath } from '../i18n/utils';
 
-interface Props {
-	title: string;
-	image: string;
-	date: string;
-	body: string;
-	href: string;
-}
+import type { CollectionEntry } from "astro:content";
 
-const { href, title, image, body, date } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const route = getRouteFromUrl(Astro.url);
+
+type Props = CollectionEntry<'blog'>['data'] & { 
+    href: string;
+    body: string;
+    date: string;
+};
+
+const { href, image, title, body, date, tags } = Astro.props;
+
 
 ---
 
@@ -35,7 +41,26 @@ const { href, title, image, body, date } = Astro.props;
             <p class="text-gray-500 text-sm">
                 {body}
             </p>
-        </div>
+            <p>
+                {
+                    tags.map((tag) => (
+                    <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
+					<a href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
+				  </span>
+                    ))
+                  }
+                <!-- {
+                    Object.entries(languages).map(([lang, label]) => (
+                        tags.map((tag) => (
+                        <a href={(Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/blog/tag/'+tag : translatePath(`/${route !== undefined ? route : 'blog/' + Astro.url.pathname.split('/').slice(3).join('/')}`, lang)}>
+                            {tag}
+                            {/* href={(Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/' : translatePath(`/${route !== undefined ? route : 'blog/' + Astro.url.pathname.split('/').slice(3).join('/')}`, lang)} */}
+                            {/* {`../../../${lang}/blog/tag/${tag}`} */}
+                        </a>
+                        ))
+                    ))
+                } -->
+            </p>
         <div class="px-6 py-4 flex flex-row items-center">
             <span
                 class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row justify-between items-center">

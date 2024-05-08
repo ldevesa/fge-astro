@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Card from "./Card.astro";
 import Link from "./Link.astro";
@@ -10,23 +11,24 @@ import Link from "./Link.astro";
 
 interface Props {
     posts: CollectionEntry<'blog'>[];
-  start?: number;
+    start?: number;
 }
 
 const { posts, start = 1 } = Astro.props;
-console.log('Astro.url.pathname', Astro.url.pathname)
+//console.log('Astro.url.pathname', Astro.url.pathname)
+
 ---
 
 <ol class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5" start={start}>
     {
         posts.map((post) => (
         <li>
-        <Link class='flex justify-between' href={`/blog/${post.slug}`}>
+        <Link class='flex justify-between' href={`/blog/${post.slug}`}>   
+
             <Card 
-                title={post.data.title}
-                image={post.data.image}
+                {...post.data} 
                 body={post.data.author}
-                date= {post.data.publishDate.toLocaleDateString('en', {
+                date={post.data.publishDate.toLocaleDateString('en', {
                     year: "numeric",
                     month: "short",
                     day: "numeric"

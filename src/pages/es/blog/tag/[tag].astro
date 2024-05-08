@@ -1,0 +1,48 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getAllTags } from "../../../../utils/getAllTags";
+import { getCollection } from "astro:content";
+import Card from "../../../../components/Card.astro";
+import BlogLayout from "../../../../layouts/BlogLayout.astro";
+
+
+export const getStaticPaths = (async () => {
+  const tags = (await getAllTags()).map((tag) => tag.toLowerCase());
+  return tags.map((tag) => ({ params: { tag }, props: { tag } }));
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.props;
+
+
+const allBlogPostsEn = await getCollection('blog', ({id}) => {
+        return id.startsWith('es/')
+    });
+
+const posts = allBlogPostsEn.filter(post => {
+    return post.data.tags.map(tag => tag.toLowerCase()).includes(tag);
+});
+
+console.log(posts);
+
+---
+<BlogLayout title="Blog">
+    <div class="max-w-content-size mx-auto w-full">
+      <section class="mt-6 w-full">
+        <ul class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+    
+            {
+                posts.map((post) => <Card 
+                    {...post.data} 
+                    body={post.data.author}
+                    date={post.data.publishDate.toLocaleDateString('en', {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric"
+                    })}
+                    href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? '../' + post.slug.split('/')[1] : 'blog/' + post.slug.split('/')[1]}`}
+                />)
+            }
+      </ul>
+    </section>
+  </div>
+</BlogLayout>

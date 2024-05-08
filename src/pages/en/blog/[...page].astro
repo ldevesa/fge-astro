@@ -4,6 +4,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import type { GetStaticPaths, Page } from 'astro';
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 import Link from "../../../components/Link.astro";
+import TagSelector from "../../../components/TagSelector.astro";
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     /* ... */ 
@@ -25,6 +26,7 @@ const {page} = Astro.props;
 ---
 
 <BlogLayout title="Posts">
+
 
     <PostsList posts={page.data} start={page.start + 1} />
 
