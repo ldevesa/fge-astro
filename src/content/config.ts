@@ -7,7 +7,6 @@ const blogCollection = defineCollection({
     author: z.string(),
     image: z.string(),
     publishDate: z.coerce.date(),
-    categories: z.array(z.string()),
     tags: z.array(z.string()),
   })
 });
