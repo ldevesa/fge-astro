@@ -9,6 +9,12 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { href, image, title, body, date, tags } = Astro.props;
 
+
+// Tu fragmento de código
+var resultado = (Astro.url.pathname !== '/en/' && Astro.url.pathname !== '/es/' && Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog');
+
+console.log('resultado', resultado); // Esto imprimirá el resultado en la consola del navegador o en un entorno de JavaScript como Node.js
+
 ---
 
 <!--   ✅ Product card 1 - Starts Here 👇 -->
@@ -35,10 +41,18 @@ const { href, image, title, body, date, tags } = Astro.props;
             </p>
             <p>
                 {
-                    tags.map((tag) => (
+                    /* tags.map((tag) => (
                     <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
-					<a href={`${((Astro.url.pathname !== '/en/' && Astro.url.pathname !== '/es/') && (Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog')) ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
+					<a href={`${(Astro.url.pathname !== '/en/' && Astro.url.pathname !== '/es/' && Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog') ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
 				  </span>
+                    ))*/
+                } 
+                
+                {
+                    tags.map((tag) => (
+                        <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
+                            <a href={resultado ? `../tag/${tag.toLowerCase()}` : `blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                        </span>
                     ))
                 }
             </p>
