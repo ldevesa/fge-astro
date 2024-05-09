@@ -32,7 +32,7 @@ const { posts, start = 1 } = Astro.props;
                     month: "short",
                     day: "numeric"
                 })}
-                href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? post.slug.split('/')[1] : 'blog/' + post.slug.split('/')[1]}`}
+                href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? post.slug.split('/')[1] : './blog/' + post.slug.split('/')[1]}`}
             />
         </Link>
         </li>
