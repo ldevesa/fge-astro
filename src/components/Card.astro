@@ -9,9 +9,13 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { href, image, title, body, date, tags } = Astro.props;
 
+// Expresión regular para usarse para encontrar rutas que comienzan con "/blog" pero no contienen "/tag" inmediatamente después de "/blog"
+var regex = /\/blog(?!.*\/tag)(\/|$)/;
+var resultregex = regex.test(Astro.url.pathname);
+console.log('resultregex', resultregex);
 
 // Tu fragmento de código
-var resultado = (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || Astro.url.pathname === '/en/blog' || Astro.url.pathname === '/es/blog' || Astro.url.pathname === '/blog');
+var resultado = (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || Astro.url.pathname === '/es/blog' || Astro.url.pathname === '/en/blog' || resultregex);
 
 console.log('resultado', resultado); // Esto imprimirá el resultado en la consola del navegador o en un entorno de JavaScript como Node.js
 

@@ -16,6 +16,11 @@ interface Props {
 const { posts, start = 1 } = Astro.props;
 //console.log('Astro.url.pathname', Astro.url.pathname)
 
+var regex = /\/blog\/\d+/;
+var resultregex = regex.test(Astro.url.pathname);
+console.log('resultregex PostList', resultregex);
+
+
 ---
 
 <ol class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5" start={start}>
@@ -32,7 +37,7 @@ const { posts, start = 1 } = Astro.props;
                     month: "short",
                     day: "numeric"
                 })}
-                href={`./blog/${post.slug.split('/')[1]}`}
+                href={resultregex ? `../blog/${post.slug.split('/')[1]}` : `./blog/${post.slug.split('/')[1]}`}
             />
         </Link>
         </li>
