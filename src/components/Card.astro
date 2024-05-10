@@ -51,7 +51,7 @@ console.log('resultado', resultado); // Esto imprimirá el resultado en la conso
                 {
                     tags.map((tag) => (
                         <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
-                            <a href={resultado ? `hola/blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a>
+                            <a href={resultado ? `./blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a>
                         </span>
                     ))
                 }
