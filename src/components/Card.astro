@@ -9,8 +9,16 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { href, image, title, body, date, tags } = Astro.props;
 
+/* var regex = /\/(es|en)\//;
+var resultLang = regex.test(Astro.url.pathname);
+console.log('resultLang', resultLang); */
 
-var resultBlog = (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || Astro.url.pathname === '/es/blog' || Astro.url.pathname === '/en/blog');
+
+var regex = /.+\/blog$/;
+var resultBlog = regex.test(Astro.url.pathname);
+console.log('resultBlog', resultBlog);
+
+var resultBlogFinal = (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || resultBlog);
 
 // la expresión regular \/blog\/\d+ verifica si "/blog/" seguido de uno o más dígitos está presente en cualquier parte de la cadena
 var regex2 = /blog\/\d+/;
@@ -57,7 +65,7 @@ var resultBlogTag = regex3.test(Astro.url.pathname);
                     tags.map((tag) => (
                         <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
                             {/* <a href={resultado ? `./blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
-                            <a href={resultBlog ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a>
+                            <a href={resultBlogFinal ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a>
                             {/* {resultBlog && <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
                             {/* {resultBlogDigit && <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
                             {/* {resultBlogTag && <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>} */}

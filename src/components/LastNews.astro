@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 let idioma = (Astro.url.pathname == "/es/") ? 'es/' : 'en/';
 
-console.log('idioma', idioma);
+//console.log('idioma', idioma);
 
 
 const allBlogPostsLang = await getCollection('blog', ({id}) => {
@@ -38,7 +38,7 @@ const { title } = Astro.props;
 						month: "short",
 						day: "numeric"
 					})}
-					href={`./blog/${post.slug.split('/')[1]}`}
+					href={`./blog/${post.slug.split('/')[1]}`}{}
 				/>
 				)).slice(0, 3)
 			}

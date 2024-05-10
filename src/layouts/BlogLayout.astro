@@ -15,14 +15,16 @@ const lang = getLangFromUrl(Astro.url);
 const {title} = Astro.props; */
 
 
-var resultBlog = (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || Astro.url.pathname === '/es/blog' || Astro.url.pathname === '/en/blog');
+var regex1 = /.+\/blog$/;
+var resultBlog = regex1.test(Astro.url.pathname);
+console.log('resultBlog', resultBlog);
 
 // la expresión regular \/blog\/\d+ verifica si "/blog/" seguido de uno o más dígitos está presente en cualquier parte de la cadena
 var regex2 = /blog\/\d+/;
 var resultBlogDigit = regex2.test(Astro.url.pathname);
 
-var regex3 = /\/blog\/tag\//;
-var resultBlogTag = regex3.test(Astro.url.pathname);
+/* var regex3 = /\/blog\/tag\//;
+var resultBlogTag = regex3.test(Astro.url.pathname); */
 
 ---
 
