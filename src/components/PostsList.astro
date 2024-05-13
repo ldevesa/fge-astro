@@ -27,7 +27,7 @@ var resultregex = regex.test(Astro.url.pathname);
     {
         posts.map((post) => (
         <li>
-        <Link class='flex justify-between' href={`/blog/${post.slug}`}>   
+        <Link class='flex justify-between'>   
 
             <Card 
                 {...post.data} 
