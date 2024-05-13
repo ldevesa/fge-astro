@@ -15,16 +15,19 @@ const lang = getLangFromUrl(Astro.url);
 const {title} = Astro.props; */
 
 
+var regex = /\/(es|en)\//;
+var resultLang = regex.test(Astro.url.pathname);
+
 var regex1 = /.+\/blog$/;
 var resultBlog = regex1.test(Astro.url.pathname);
-console.log('resultBlog', resultBlog);
 
-// la expresión regular \/blog\/\d+ verifica si "/blog/" seguido de uno o más dígitos está presente en cualquier parte de la cadena
+var resultBlogFinal = (resultLang || resultBlog);
+
 var regex2 = /blog\/\d+/;
 var resultBlogDigit = regex2.test(Astro.url.pathname);
 
-/* var regex3 = /\/blog\/tag\//;
-var resultBlogTag = regex3.test(Astro.url.pathname); */
+var regex3 = /\/blog\/tag\//;
+var resultBlogTag = regex3.test(Astro.url.pathname);
 
 ---
 
@@ -55,8 +58,19 @@ var resultBlogTag = regex3.test(Astro.url.pathname); */
 			{
 				tags.map((tag) => (
 					<span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
+
+							{
+                            (Astro.url.pathname === '/en/blog' || Astro.url.pathname === '/es/blog')
+                                ? <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                : (/blog\/\d+/).test(Astro.url.pathname)
+                                    ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                    : resultBlogTag
+                                        ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
+                                        : null 
+                            }
+
 						{/* <a href={resultBlog ? `./blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
-						<a href={resultBlog ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a>
+						{/* <a href={resultBlog ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
 						{/* {resultBlog && <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
 						{/* {resultBlogDigit && <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
 						{/* {resultBlogTag && <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>} */}

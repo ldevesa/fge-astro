@@ -9,25 +9,22 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { href, image, title, body, date, tags } = Astro.props;
 
-/* var regex = /\/(es|en)\//;
+
+var regex = /\/(es|en)\//;
 var resultLang = regex.test(Astro.url.pathname);
-console.log('resultLang', resultLang); */
 
+var regex1 = /.+\/blog$/;
+var resultBlog = regex1.test(Astro.url.pathname);
 
-var regex = /.+\/blog$/;
-var resultBlog = regex.test(Astro.url.pathname);
-console.log('resultBlog', resultBlog);
+var resultBlogFinal = (resultLang || resultBlog);
 
-var resultBlogFinal = (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || resultBlog);
-
-// la expresión regular \/blog\/\d+ verifica si "/blog/" seguido de uno o más dígitos está presente en cualquier parte de la cadena
 var regex2 = /blog\/\d+/;
 var resultBlogDigit = regex2.test(Astro.url.pathname);
 
 var regex3 = /\/blog\/tag\//;
 var resultBlogTag = regex3.test(Astro.url.pathname);
 
-
+//console.log('Astro.url.pathname', Astro.url.pathname );
 ---
 
 <!--   ✅ Product card 1 - Starts Here 👇 -->
@@ -65,7 +62,20 @@ var resultBlogTag = regex3.test(Astro.url.pathname);
                     tags.map((tag) => (
                         <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
                             {/* <a href={resultado ? `./blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
-                            <a href={resultBlogFinal ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a>
+
+                            
+                            {
+                            (Astro.url.pathname === '/en/' || Astro.url.pathname === '/es/' || Astro.url.pathname === '/en/blog' || Astro.url.pathname === '/es/blog')
+                                ? <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                : (/blog\/\d+/).test(Astro.url.pathname)
+                                    ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                    : resultBlogTag
+                                        ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
+                                        : null 
+                            }
+
+
+                            {/* <a href={resultBlogFinal ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
                             {/* {resultBlog && <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
                             {/* {resultBlogDigit && <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
                             {/* {resultBlogTag && <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>} */}
