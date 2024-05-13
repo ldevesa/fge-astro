@@ -58,7 +58,7 @@ var resultBlogTag = regex3.test(Astro.url.pathname);
                                 : resultBlogDigit
                                     ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                                     : resultBlogTag
-                                        ? <a href={`../../tag/${tag.toLowerCase()}`}>{tag}</a>
+                                        ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
                                         : <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                             }
                         </li>
