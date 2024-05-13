@@ -24,7 +24,8 @@ var resultBlogDigit = regex2.test(Astro.url.pathname);
 var regex3 = /\/blog\/tag\//;
 var resultBlogTag = regex3.test(Astro.url.pathname);
 
-//console.log('Astro.url.pathname', Astro.url.pathname );
+console.log('Astro.url.pathname', Astro.url.pathname );
+console.log('Resultado Blog Final', resultBlogFinal);
 ---
 
 <!--   ✅ Product card 1 - Starts Here 👇 -->
@@ -66,7 +67,7 @@ var resultBlogTag = regex3.test(Astro.url.pathname);
                             
                             {
                             resultBlogFinal
-                                ? <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                ? <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                                 : (/blog\/\d+/).test(Astro.url.pathname)
                                     ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                                     : resultBlogTag
