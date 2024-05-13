@@ -10,7 +10,7 @@ type Props = CollectionEntry<'blog'>['data'] & {
 const { href, image, title, body, date, tags } = Astro.props;
 
 
-var regex = /\/(es|en)\//;
+var regex = /\/(es|en)\/$/;
 var resultLang = regex.test(Astro.url.pathname);
 
 var regex1 = /.+\/blog$/;
