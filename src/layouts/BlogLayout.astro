@@ -15,10 +15,10 @@ const lang = getLangFromUrl(Astro.url);
 const {title} = Astro.props; */
 
 
-var regex = /\/(es|en)\//;
+var regex = /\/(es|en)\/$/;
 var resultLang = regex.test(Astro.url.pathname);
 
-var regex1 = /.+\/blog$/;
+var regex1 = /\/blog$/;
 var resultBlog = regex1.test(Astro.url.pathname);
 
 var resultBlogFinal = (resultLang || resultBlog);
