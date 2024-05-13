@@ -66,13 +66,15 @@ console.log('Resultado Blog Final', resultBlogFinal);
 
                             
                             {
-                            resultBlogFinal
+                            resultLang
                                 ? <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
-                                : (/blog\/\d+/).test(Astro.url.pathname)
-                                    ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
-                                    : resultBlogTag
-                                        ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
-                                        : <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                : (/\/blog$/).test(Astro.url.pathname)
+                                    ? <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                    : (/blog\/\d+/).test(Astro.url.pathname)
+                                        ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                                        : resultBlogTag
+                                            ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
+                                            : <p>algo</p>
                             }
 
 
