@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import Tags from "./Tags.astro";
 
 type Props = CollectionEntry<'blog'>['data'] & { 
     href: string;
@@ -9,23 +10,6 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { href, image, title, body, date, tags } = Astro.props;
 
-
-var regex = /\/(es|en)\/$/;
-var resultLang = regex.test(Astro.url.pathname);
-
-var regex1 = /\/blog$/;
-var resultBlog = regex1.test(Astro.url.pathname);
-
-var resultBlogFinal = (resultLang || resultBlog);
-
-var regex2 = /blog\/\d+/;
-var resultBlogDigit = regex2.test(Astro.url.pathname);
-
-var regex3 = /\/blog\/tag\//;
-var resultBlogTag = regex3.test(Astro.url.pathname);
-
-console.log('Astro.url.pathname', Astro.url.pathname );
-console.log('Resultado Blog Final', resultBlogFinal);
 ---
 
 <!--   ✅ Product card 1 - Starts Here 👇 -->
@@ -50,23 +34,8 @@ console.log('Resultado Blog Final', resultBlogFinal);
             <p class="text-gray-500 text-sm">
                 {body}
             </p>
-            <ul class="flex flex-wrap gap-2 pt-4 text-sm text-sky-600 *:rounded-full *:border *:border-sky-100 *:bg-pink-200 *:px-2 *:py-0.5 dark:text-sky-300 dark:*:border-sky-500/15 dark:*:bg-sky-500/10">
-                {
-                    tags.map((tag) => (
-                        <li>
-                            {
-                            resultBlogFinal
-                                ? <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
-                                : resultBlogDigit
-                                    ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
-                                    : resultBlogTag
-                                        ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
-                                        : <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
-                            }
-                        </li>
-                    ))
-                }
-            </ul>
+
+            <Tags />
             
         <div class="px-6 py-4 flex flex-row items-center">
             <span

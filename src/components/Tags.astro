@@ -1,0 +1,39 @@
+---
+import { getAllTags } from "../utils/getAllTags";
+
+
+const tags = await getAllTags();
+
+var regex = /\/(es|en)\/$/;
+var resultLang = regex.test(Astro.url.pathname);
+
+var regex1 = /\/blog$/;
+var resultBlog = regex1.test(Astro.url.pathname);
+
+var resultBlogFinal = (resultLang || resultBlog);
+
+var regex2 = /blog\/\d+/;
+var resultBlogDigit = regex2.test(Astro.url.pathname);
+
+var regex3 = /\/blog\/tag\//;
+var resultBlogTag = regex3.test(Astro.url.pathname);
+
+---
+
+<ul class="flex flex-wrap gap-2 pt-4 text-sm text-sky-600 *:rounded-full *:border *:border-sky-100 *:bg-pink-200 *:px-2 *:py-0.5 dark:text-sky-300 dark:*:border-sky-500/15 dark:*:bg-sky-500/10">
+    {
+        tags.map((tag) => (
+            <li>
+                {
+                resultBlogFinal
+                    ? <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                    : resultBlogDigit
+                        ? <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                        : resultBlogTag
+                            ? <a href={`${tag.toLowerCase()}`}>{tag}</a>
+                            : <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                }
+            </li>
+        ))
+    }
+</ul>
