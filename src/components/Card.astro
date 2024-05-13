@@ -50,21 +50,10 @@ console.log('Resultado Blog Final', resultBlogFinal);
             <p class="text-gray-500 text-sm">
                 {body}
             </p>
-            <p>
-                {
-                    /* tags.map((tag) => (
-                    <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
-					<a href={`${(Astro.url.pathname !== '/en/' && Astro.url.pathname !== '/es/' && Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog') ? '../tag/' + tag.toLowerCase() : 'blog/tag/' + tag.toLowerCase()}`}>{tag}</a>
-				  </span>
-                    ))*/
-                } 
-                
+            <ul class="flex flex-wrap gap-2 pt-4 text-sm text-sky-600 *:rounded-full *:border *:border-sky-100 *:bg-pink-200 *:px-2 *:py-0.5 dark:text-sky-300 dark:*:border-sky-500/15 dark:*:bg-sky-500/10">
                 {
                     tags.map((tag) => (
-                        <span class="border-extra-soft-white mt-4 self-start rounded border px-2 py-1 text-zinc-400">
-                            {/* <a href={resultado ? `./blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
-
-                            
+                        <li>
                             {
                             resultBlogFinal
                                 ? <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
@@ -74,16 +63,11 @@ console.log('Resultado Blog Final', resultBlogFinal);
                                         ? <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>
                                         : <a href={`blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                             }
-
-
-                            {/* <a href={resultBlogFinal ? `./blog/tag/${tag.toLowerCase()}` : resultBlogDigit ? `../blog/tag/${tag.toLowerCase()}` : `../tag/${tag.toLowerCase()}`}>{tag}</a> */}
-                            {/* {resultBlog && <a href={`./blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
-                            {/* {resultBlogDigit && <a href={`../blog/tag/${tag.toLowerCase()}`}>{tag}</a>} */}
-                            {/* {resultBlogTag && <a href={`../tag/${tag.toLowerCase()}`}>{tag}</a>} */}
-                        </span>
+                        </li>
                     ))
                 }
-            </p>
+            </ul>
+            
         <div class="px-6 py-4 flex flex-row items-center">
             <span
                 class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row justify-between items-center">
