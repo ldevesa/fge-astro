@@ -26,6 +26,20 @@ const lang = getLangFromUrl(Astro.url);
 </body>
 </html>
 
+<style is:global>
+    /* Registra tu font family personalizada y le indicamos al navegador dónde encontrarla. */
+@font-face {
+  font-family: 'Evolventa';
+  src: url('/fonts/Evolventa-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Evolventa', sans-serif;
+}
+</style>
+
 <script>
     gsap.registerPlugin(ScrollTrigger);
 	import gsap from "gsap";
