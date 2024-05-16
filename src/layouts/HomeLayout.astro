@@ -28,15 +28,60 @@ const lang = getLangFromUrl(Astro.url);
 
 <style is:global>
     /* Registra tu font family personalizada y le indicamos al navegador dónde encontrarla. */
+    @font-face {
+    font-family: 'Evolventa';
+    src: url('/fonts/Evolventa-BoldOblique.eot');
+    src: url('/fonts/Evolventa-BoldOblique.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Evolventa-BoldOblique.woff2') format('woff2'),
+        url('/fonts/Evolventa-BoldOblique.woff') format('woff'),
+        url('/fonts/Evolventa-BoldOblique.ttf') format('truetype'),
+        url('/fonts/Evolventa-BoldOblique.svg#Evolventa-BoldOblique') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
 @font-face {
-  font-family: 'Evolventa';
-  src: url('/fonts/Evolventa-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Evolventa';
+    src: url('/fonts/Evolventa-Oblique.eot');
+    src: url('/fonts/Evolventa-Oblique.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Evolventa-Oblique.woff2') format('woff2'),
+        url('/fonts/Evolventa-Oblique.woff') format('woff'),
+        url('/fonts/Evolventa-Oblique.ttf') format('truetype'),
+        url('/fonts/Evolventa-Oblique.svg#Evolventa-Oblique') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Evolventa';
+    src: url('/fonts/Evolventa-Bold.eot');
+    src: url('/fonts/Evolventa-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Evolventa-Bold.woff2') format('woff2'),
+        url('/fonts/Evolventa-Bold.woff') format('woff'),
+        url('/fonts/Evolventa-Bold.ttf') format('truetype'),
+        url('/fonts/Evolventa-Bold.svg#Evolventa-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Evolventa';
+    src: url('/fonts/Evolventa-Regular.eot');
+    src: url('/fonts/Evolventa-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Evolventa-Regular.woff2') format('woff2'),
+        url('/fonts/Evolventa-Regular.woff') format('woff'),
+        url('/fonts/Evolventa-Regular.ttf') format('truetype'),
+        url('/fonts/Evolventa-Regular.svg#Evolventa-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Evolventa', sans-serif;
+    font-weight: bold;
 }
 </style>
 
