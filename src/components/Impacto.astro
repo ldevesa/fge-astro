@@ -1,14 +1,24 @@
 ---
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
 
 ---
 
 <!-- Contenedores para las barras de progreso -->
-
-<div class="grid gap-0 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-    <div class="progress-container" id="progress1"></div>
-    <div class="progress-container" id="progress2"></div>
-    <div class="progress-container" id="progress3"></div>
-    <div class="progress-container" id="progress4"></div>
+<div class="bg-[url('/images/etica.jpg')] bg-cover bg-no-repeat bg-center w-full">
+    <div class=" backdrop-opacity-45 bg-blue-gray-900/50 w-full py-6 sm:py-8 lg:py-12">
+        <h2 class="mb-8 text-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">{title}</h2>
+        <div class="mx-auto px-10 lg:px-20 max-w-full-xl">
+            <div class="grid gap-0 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+                <div class="progress-container" id="progress1"></div>
+                <div class="progress-container" id="progress2"></div>
+                <div class="progress-container" id="progress3"></div>
+                <div class="progress-container" id="progress4"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
