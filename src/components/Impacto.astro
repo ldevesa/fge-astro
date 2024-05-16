@@ -17,6 +17,9 @@
 
 <style>
     .progress-container {
+        font-family: 'Evolventa', sans-serif;
+        font-size: 2.5rem;
+        text-align: center;
         margin: 20px auto;
         width: 230px;
         height: 230px;
@@ -53,12 +56,11 @@
             text: {
                 autoStyleContainer: false
             },
-            from: { color: '#aaa', width: 1 },
-            to: { color: '#ec4899', width: 4 },
+            from: { color: '#aaa' },
+            to: { color: '#ec4899' },
             // Set default step function for all animate calls
             step: function(state: any, circle: any) {
                 circle.path.setAttribute('stroke', state.color);
-                circle.path.setAttribute('stroke-width', state.width);
 
                 var value = Math.round(circle.value() * ratioValue);
                 if (value === 0) {
@@ -69,9 +71,6 @@
 
             }
         });
-        bar.text.style.fontFamily = '"Evolventa", sans-serif';
-        bar.text.style.fontSize = '2.5rem';
-        bar.text.style.textAlign = 'center';
 
         //bar.animate(1.0);  // Number from 0.0 to 1.0
         // Animar la barra de progreso al 0% al principio
