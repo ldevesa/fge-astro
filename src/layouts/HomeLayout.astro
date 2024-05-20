@@ -85,6 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 </style>
 
+
 <script>
     gsap.registerPlugin(ScrollTrigger);
 	import gsap from "gsap";
@@ -94,9 +95,9 @@ h1, h2, h3, h4, h5, h6 {
     // smooth scroll
     const lenis = new Lenis();
 
-    lenis.on('scroll', (e:any) => {
+    /* lenis.on('scroll', (e:any) => {
         console.log(e);
-    });
+    }); */
 
     lenis.on('scroll', ScrollTrigger.update);
 

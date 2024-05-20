@@ -27,19 +27,6 @@ const { image, width, height } = Astro.props;
     // Ejecutar la función setupSidebar() cada vez que ocurre una transición de página
 	document.addEventListener('astro:page-load', () => {
         
-
-        /* gsap.to(".giro", {
-            scrollTrigger: {
-                trigger: ".container-giro",
-                scrub: true,
-                start: 'bottom bottom',
-                end: '+=2000',
-            },
-            rotation: 1500,
-            ease: "none",
-        });  */
-
-
         gsap.timeline({
         scrollTrigger:{
             trigger: ".container-giro",
@@ -53,8 +40,5 @@ const { image, width, height } = Astro.props;
         duration:1, ease:'none',
         })
 
-
     });
-
-
 </script>
