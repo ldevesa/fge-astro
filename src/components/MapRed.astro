@@ -1,15 +1,16 @@
 ---
 import ImageGiro from "./ImageGiro.astro";
+
 ---
 
 <div class="w-full">
     <div class="mx-auto max-w-full-xl">
         <div class="grid gap-0 lg:grid-cols-2 lg:gap-0">
-            <div class="relative">
+            <div class="relative" data-aos="fade-right">
                 <iframe src="https://www.google.com/maps/d/embed?mid=1snAQQDmYvrNqwWXf04swmfZKjdFSNUA&ehbc=2E312F" width="100%" height="600"></iframe>
             </div>
 
-            <div class="bg-green-500 px-10 lg:px-32 py-10">
+            <div class="bg-green-500 px-10 lg:px-32 py-10" data-aos="fade-left">
                 <div class="container-giro flex justify-end">
 					<ImageGiro image='/images/splash-blanco.svg' width={70} height={70} />
 				</div>

@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import { getLangFromUrl } from '../i18n/utils';
 import Header from "../components/Header.astro";
-
+import "aos/dist/aos.css"; // AOS styles
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -23,6 +23,15 @@ const lang = getLangFromUrl(Astro.url);
 
     </main>
 
+    <script>
+        import { initAos } from "../utils/initAos";
+
+        // runs on initial page load
+        initAos();
+
+        // runs on view transitions navigation
+        document.addEventListener("astro:after-swap", initAos);
+    </script>
 </body>
 </html>
 
