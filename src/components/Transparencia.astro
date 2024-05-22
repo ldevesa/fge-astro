@@ -43,8 +43,6 @@ const { title } = Astro.props;
     gsap.registerPlugin(ScrollTrigger);
 
 
-    let counterTriggers:any = [];
-
     function counter() {
         let counters = document.getElementsByClassName("count");
         let countersQuantity = counters.length;
@@ -78,8 +76,15 @@ const { title } = Astro.props;
         }
 
     }
+    
 
-    function reCounter() {
+    function counterTrigger() {
+        // Destruye el ScrollTrigger si ya existe uno
+        const existingTrigger = ScrollTrigger.getById("counterTrigger");
+        if (existingTrigger !== null && existingTrigger !== undefined) {
+            existingTrigger.kill();
+        }
+        
         // Configura el ScrollTrigger
         ScrollTrigger.create({
             trigger: ".count-container", // Cambia esto a tu contenedor de contador
@@ -92,18 +97,17 @@ const { title } = Astro.props;
         });
     }
 
-    function destroyProgressBars() {
-        // Limpiar solo los ScrollTriggers etiquetados con 'progress-'
-        ScrollTrigger.getAll().forEach(trigger => {
-            //@ts-ignore
-            counterTriggers.forEach(trigger => trigger.kill());
-            counterTriggers = [];
-        });
-    }
 
     document.addEventListener('astro:page-load', () => {
-        destroyProgressBars();
-        reCounter();
+        counterTrigger();
+    });
+
+    // Destruye el ScrollTrigger cuando se cambia de página
+    document.addEventListener('astro:page-change', () => {
+        let trigger = ScrollTrigger.getById("counterTrigger");
+        if (trigger) {
+            trigger.kill();
+        }
     });
     
 
