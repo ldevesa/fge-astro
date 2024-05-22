@@ -17,7 +17,7 @@ const { title } = Astro.props;
                 <div class=" text-sm">Ingresos totales</div>
             </div>
             <div class=" flex justify-center flex-col items-center">
-                <div class="flex"><Icon name="ph--tag-chevron-fill" style="width: 2.1rem; height: 2.1rem; transform: rotate(90deg); color: #e8296f;" /><span class="count" data-target="5756068" style="color: #e8296f;"></span></div>
+                <div class="flex"><Icon name="ph--tag-chevron-fill" style="width: 2.1rem; height: 2.1rem; transform: rotate(90deg); color: #e8296f;" /><span class="count" data-target="5756068" style="color: #e8296f;">0</span></div>
                 <div class=" text-sm">Egresos totales</div>
             </div>
             <div></div>
@@ -41,6 +41,9 @@ const { title } = Astro.props;
 
     // Registra el plugin de ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
+
+
+    let counterTriggers:any = [];
 
     function counter() {
         let counters = document.getElementsByClassName("count");
@@ -73,19 +76,35 @@ const { title } = Astro.props;
             counters[j].innerHTML = '0'; // Resetea el contador
             count(0, counter[j], j);
         }
+
     }
 
-    // Configura el ScrollTrigger
-    ScrollTrigger.create({
-        trigger: ".count-container", // Cambia esto a tu contenedor de contador
-        start: "top bottom", // Puedes ajustar esto según la posición que necesites
-        onEnter: () => {
-            console.log("ScrollTrigger activated");
-            counter();
-        },
-        toggleActions: "play none none reset" // Ensure it plays on enter - Son cuatro estados: onEnter, onLeave, onEnterBack, y onLeaveBack.
-    });
+    function reCounter() {
+        // Configura el ScrollTrigger
+        ScrollTrigger.create({
+            trigger: ".count-container", // Cambia esto a tu contenedor de contador
+            start: "top bottom", // Puedes ajustar esto según la posición que necesites
+            onEnter: () => {
+                console.log("ScrollTrigger activated");
+                counter();
+            },
+            toggleActions: "play none none reset" // Ensure it plays on enter - Son cuatro estados: onEnter, onLeave, onEnterBack, y onLeaveBack.
+        });
+    }
 
-    //counter();
+    function destroyProgressBars() {
+        // Limpiar solo los ScrollTriggers etiquetados con 'progress-'
+        ScrollTrigger.getAll().forEach(trigger => {
+            //@ts-ignore
+            counterTriggers.forEach(trigger => trigger.kill());
+            counterTriggers = [];
+        });
+    }
+
+    document.addEventListener('astro:page-load', () => {
+        destroyProgressBars();
+        reCounter();
+    });
+    
 
 </script>
