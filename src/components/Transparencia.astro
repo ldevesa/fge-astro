@@ -1,0 +1,91 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+---
+
+
+<div class="count-container w-full py-8">
+    <div class="mx-auto max-w-full-xl">
+        <h2 class="mb-8 text-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold" style="color: #4c4890;">{title}</h2>
+        <div class="grid gap-0 lg:grid-cols-4 lg:gap-0 text-center text-5xl font-bold">
+            <div></div>
+            <div class=" flex justify-center flex-col items-center">
+                <div class="flex"><Icon name="ph--tag-chevron-fill" style="width: 2.1rem; height: 2.1rem; transform: rotate(-90deg); color: #19A86B;" /><span class="count" data-target="8955005" style="color: #19A86B;">0</span></div>
+                <div class=" text-sm">Ingresos totales</div>
+            </div>
+            <div class=" flex justify-center flex-col items-center">
+                <div class="flex"><Icon name="ph--tag-chevron-fill" style="width: 2.1rem; height: 2.1rem; transform: rotate(90deg); color: #e8296f;" /><span class="count" data-target="5756068" style="color: #e8296f;"></span></div>
+                <div class=" text-sm">Egresos totales</div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+
+</style>
+
+
+<script>
+
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    // Registra el plugin de ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    function counter() {
+        let counters = document.getElementsByClassName("count");
+        let countersQuantity = counters.length;
+        let counter = [];
+
+        for (let i = 0; i < countersQuantity; i++) {
+            // Usa el operador de coalescencia nula (??) para proporcionar un valor predeterminado
+            let targetValue = counters[i].getAttribute("data-target");
+            counter[i] = parseInt(targetValue ?? "0");
+            console.log(`Counter ${i} target value:`, counter[i]);
+        }
+
+        //@ts-ignore
+        let count = function(start, value, id) {
+            let localStart = start;
+            let increment = Math.ceil((value - start) / 100); // Incremento más grande
+            let interval = setInterval(function() {
+                if (localStart < value) {
+                    localStart += increment; // Aumento rápido
+                    counters[id].innerHTML = localStart.toLocaleString();
+                } else {
+                    clearInterval(interval);
+                }
+            }, 40); // Intervalo de tiempo (puedes ajustarlo según tus necesidades)
+        }
+
+
+        for (let j = 0; j < countersQuantity; j++) {
+            counters[j].innerHTML = '0'; // Resetea el contador
+            count(0, counter[j], j);
+        }
+    }
+
+    // Configura el ScrollTrigger
+    ScrollTrigger.create({
+        trigger: ".count-container", // Cambia esto a tu contenedor de contador
+        start: "top bottom", // Puedes ajustar esto según la posición que necesites
+        onEnter: () => {
+            console.log("ScrollTrigger activated");
+            counter();
+        },
+        toggleActions: "play none none reset" // Ensure it plays on enter - Son cuatro estados: onEnter, onLeave, onEnterBack, y onLeaveBack.
+    });
+
+    //counter();
+
+</script>

@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import { getLangFromUrl } from '../i18n/utils';
 import Header from "../components/Header.astro";
+import Footer from '../components/Footer.astro';
 import "aos/dist/aos.css"; // AOS styles
 
 const lang = getLangFromUrl(Astro.url);
@@ -22,6 +23,8 @@ const lang = getLangFromUrl(Astro.url);
         <slot />
 
     </main>
+
+    <Footer />
 
     <script>
         import { initAos } from "../utils/initAos";
