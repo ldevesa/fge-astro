@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CardRed from "./CardRed.astro";
+import Link from "./Link.astro";
+
+/* export type Props = {
+  posts: CollectionEntry<'red'>[];
+  start?: number;
+}; */
+
+interface Props {
+    posts: CollectionEntry<'red'>[];
+    start?: number;
+}
+
+const { posts, start = 1 } = Astro.props;
+//console.log('Astro.url.pathname', Astro.url.pathname)
+
+// la expresión regular \/blog\/\d+ verifica si "/blog/" seguido de uno o más dígitos está presente en cualquier parte de la cadena
+var regex = /\/red\/\d+/;
+var resultregex = regex.test(Astro.url.pathname);
+console.log('resultregex PostRedList', resultregex);
+
+---
+
+<ol class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5" start={start}>
+    {
+        posts.map((post) => (
+        <li>
+        <Link class='flex justify-between'>   
+
+            <CardRed 
+                {...post.data} 
+                date={post.data.publishDate.toLocaleDateString('en', {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                })}
+                href={resultregex ? `../red/${post.slug.split('/')[1]}` : `./red/${post.slug.split('/')[1]}`}
+            />
+        </Link>
+        </li>
+        ))
+    }
+</ol>

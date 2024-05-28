@@ -22,7 +22,7 @@ const posts = allBlogPostsEn.filter(post => {
     return post.data.tags.map(tag => tag.toLowerCase()).includes(tag);
 });
 
-console.log(posts);
+//console.log(posts);
 
 ---
 <BlogLayout title="Blog">
@@ -39,7 +39,7 @@ console.log(posts);
                         month: "short",
                         day: "numeric"
                     })}
-                    href={`${Astro.url.pathname !== '/en/blog' && Astro.url.pathname !== '/es/blog' ? '../' + post.slug.split('/')[1] : 'blog/' + post.slug.split('/')[1]}`}
+                    href={`${Astro.url.pathname !== '/en/red' && Astro.url.pathname !== '/es/red' ? '../' + post.slug.split('/')[1] : 'red/' + post.slug.split('/')[1]}`}
                 />)
             }
       </ul>

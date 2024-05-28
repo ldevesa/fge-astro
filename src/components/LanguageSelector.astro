@@ -11,6 +11,11 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 const route = getRouteFromUrl(Astro.url);
 
+let isBlogOrRed = (Astro.url.pathname.split('/').slice(2, 3).join('/') == "blog") ? 'blog/' : ((Astro.url.pathname.split('/').slice(2, 3).join('/') == "red") ? 'red/' : undefined);
+
+//console.log('Astro.url.pathname:', Astro.url.pathname.split('/').slice(2, 3).join('/'));
+//console.log('Route', route);
+//console.log('isBlogOrRed', isBlogOrRed);
 ---
 
 
@@ -34,7 +39,7 @@ const route = getRouteFromUrl(Astro.url);
                         <li>
                             <a
                             id="cambiaContenido"
-                            href={(Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/' : translatePath(`/${route !== undefined ? route : 'blog/' + Astro.url.pathname.split('/').slice(3).join('/')}`, lang)}
+                            href={(Astro.url.pathname == "/es/" || Astro.url.pathname == "/en/")? '/'+lang+'/' : translatePath(`/${route !== undefined ? route : isBlogOrRed + Astro.url.pathname.split('/').slice(3).join('/')}`, lang)}
                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}
                             </a>
                         </li>

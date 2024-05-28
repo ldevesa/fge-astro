@@ -60,6 +60,10 @@ let currentPath = Astro.url.pathname;
             </svg></a>
                 <ul class="absolute origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
                     <li class="p-2"
+                    id={currentPath === translatePath('/red') ? 'active' : ''}>
+                        <a href={translatePath('/red')}>{t('nav.red')}</a>
+                    </li>
+                    <li class="p-2"
                     id={currentPath === translatePath('/blog') ? 'active' : ''}>
                         <a href={translatePath('/blog')}>{t('nav.blog')}</a>
                     </li>
@@ -138,6 +142,10 @@ let currentPath = Astro.url.pathname;
                     </svg>
                 </summary>
                 <ul class="py-2 pl-3 pr-4 bg-white divide-y divide-gray-100 rounded-md shadow-lg ">
+                    <li class="p-2"
+                    id={currentPath === translatePath('/red') ? 'active' : ''}>
+                        <a href={translatePath('/red')}>{t('nav.red')}</a>
+                    </li>
                     <li class="p-2"
                     id={currentPath === translatePath('/blog') ? 'active' : ''}>
                         <a href={translatePath('/blog')}>{t('nav.blog')}</a>

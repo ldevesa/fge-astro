@@ -11,6 +11,17 @@ const blogCollection = defineCollection({
   })
 });
 
+const redCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    image: z.string(),
+    map: z.string().optional(),
+    publishDate: z.coerce.date(),
+  })
+});
+
 export const collections = {
-  'blog': blogCollection
+  'blog': blogCollection,
+  'red': redCollection
 };

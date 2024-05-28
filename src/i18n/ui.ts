@@ -24,6 +24,7 @@ export const ui = {
     'nav.que-hacemos': 'Qué Hacemos',
     'nav.sumate': 'Sumate',
     'nav.blog': 'Notas',
+    'nav.red': 'Red Gestionar',
     'nav.contacto': 'Contacto',
 
   },
@@ -34,6 +35,7 @@ export const ui = {
     'nav.que-hacemos': 'What We Do',
     'nav.sumate': 'Join Us',
     'nav.blog': 'Blog',
+    'nav.red': 'Red Gestionar',
     'nav.contacto': 'Contact',
 
   },
@@ -46,6 +48,7 @@ export const routes = {
     'que-hacemos': 'que-hacemos',
     'sumate': 'sumate',
     'blog': 'blog',
+    'red': 'red',
     'contacto': 'contacto',
   },
   en: {
@@ -54,6 +57,7 @@ export const routes = {
     'que-hacemos': 'what-we-do',
     'sumate': 'join-us',
     'blog': 'blog',
+    'red': 'red',
     'contacto': 'contact',
 
   },
