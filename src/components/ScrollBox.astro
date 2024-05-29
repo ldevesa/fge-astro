@@ -1,12 +1,15 @@
 ---
+import { getI18N } from "../i18n";
 
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 
 ---
 <div id="gallery" class="flex overflow-hidden justify-center">
 	<div id="left" class="hidden md:block sm:w-1/2 lg:w-1/2">
 		<div id="desktopContent" class="m-auto text-white">
 			<div id="sector1" class="desktopContentSection" style="background-color: #69b5cb;">
-				<h2 class="text-5xl font-bold pb-12">Formalizamos</h2>
+				<h2 class="text-5xl font-bold pb-12">{i18n.SCROLL_BOX_COMPONENT.TITLE_1}</h2>
 				<p class="pb-10"><b>Programa de fortalecimiento de organizaciones comunitarias.</b> <br>
 					Estamos convencidos de que la formalización es una estrategia
 					fundamental para potenciar el trabajo de las organizaciones
@@ -15,7 +18,7 @@
 				<a href="#" class=" w-52 inline-block rounded-[50px] bg-pink-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-pink-600 focus-visible:ring active:bg-pink-700 md:text-base">Ver más</a>
 			</div>
 			<div id="sector2" class="desktopContentSection" style="background-color: #e8296f;">
-				<h2 class="text-5xl font-bold pb-12">Referentes al frente</h2>
+				<h2 class="text-5xl font-bold pb-12">{i18n.SCROLL_BOX_COMPONENT.TITLE_2}</h2>
 				<p class="pb-10"><b>Programa de fortalecimiento de organizaciones comunitarias.</b> <br>
 					Estamos convencidos de que la formalización es una estrategia
 					fundamental para potenciar el trabajo de las organizaciones
@@ -24,7 +27,7 @@
 				<a href="#" class=" w-52 inline-block rounded-[50px] bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Ver más</a>
 			</div>
 			<div id="sector3" class="desktopContentSection" style="background-color: #4c4890;">
-				<h2 class="text-5xl font-bold pb-12">Una vuelta +</h2>
+				<h2 class="text-5xl font-bold pb-12">{i18n.SCROLL_BOX_COMPONENT.TITLE_3}</h2>
 				<p class="pb-10"><b>Programa de fortalecimiento de organizaciones comunitarias.</b> <br>
 					Estamos convencidos de que la formalización es una estrategia
 					fundamental para potenciar el trabajo de las organizaciones
@@ -33,7 +36,7 @@
 				<a href="#" class=" w-52 inline-block rounded-[50px] bg-green-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-green-600 focus-visible:ring active:bg-green-700 md:text-base">Ver más</a>
 			</div>
 			<div id="sector4" class="desktopContentSection" style="background-color: #19A86B;">
-				<h2 class="text-5xl font-bold pb-12">Espacios con valor</h2>
+				<h2 class="text-5xl font-bold pb-12">{i18n.SCROLL_BOX_COMPONENT.TITLE_4}</h2>
 				<p class="pb-10"><b>Programa de fortalecimiento de organizaciones comunitarias.</b> <br>
 					Estamos convencidos de que la formalización es una estrategia
 					fundamental para potenciar el trabajo de las organizaciones
@@ -43,7 +46,7 @@
 			</div>
 			<div id="sector5" class="desktopContentSection" style="background-color: #69b5cb;">
 
-				<h2 class="text-5xl font-bold pb-12">Asistencia alimentaria</h2>
+				<h2 class="text-5xl font-bold pb-12">{i18n.SCROLL_BOX_COMPONENT.TITLE_5}</h2>
 				<p class="pb-10"><b>Programa de fortalecimiento de organizaciones comunitarias.</b> <br>
 					Estamos convencidos de que la formalización es una estrategia
 					fundamental para potenciar el trabajo de las organizaciones

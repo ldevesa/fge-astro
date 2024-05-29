@@ -1,6 +1,15 @@
 ---
 import ImageGiro from "./ImageGiro.astro";
 
+interface Props {
+	title: string;
+    primerparrafo: string;
+    segundoparrafo: string;
+    btn_url: string;
+    boton: string;
+}
+const { title, primerparrafo, segundoparrafo, btn_url, boton } = Astro.props;
+
 ---
 
 <div class="w-full">
@@ -14,11 +23,11 @@ import ImageGiro from "./ImageGiro.astro";
                 <div class="container-giro flex justify-end">
 					<ImageGiro image='/images/splash-blanco.svg' width={70} height={70} />
 				</div>
-                <h2 class="mb-8 text-left text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-50">Red Gestionar</h2>
-                <p class="font-bold text-gray-50 md:text-left">Somos un equipo que cree y trabaja construyendo un futuro sustentable e inclusivo.</p>
-                <p class="text-gray-50 md:text-left">La inclusión social y el desarrollo humano y comunitario de niños y familias en situación de vulnerabilidad son los ejes transversales de nuestras actividades.</p>
+                <h2 class="mb-8 text-left text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-50">{title}</h2>
+                <p class="font-bold text-gray-50 md:text-left">{primerparrafo}</p>
+                <p class="text-gray-50 md:text-left">{segundoparrafo}</p>
                 <br>
-                <a href="#" class=" w-60 md:w-72 inline-block rounded-[50px] bg-cyan-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-cyan-300 transition duration-100 hover:bg-cyan-600 focus-visible:ring active:bg-cyan-700 md:text-base">Ver todas las Organizaciones</a>
+                <a href={btn_url} class=" w-60 md:w-72 inline-block rounded-[50px] bg-cyan-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-cyan-300 transition duration-100 hover:bg-cyan-600 focus-visible:ring active:bg-cyan-700 md:text-base">{boton}</a>
             </div>
         </div>
     </div>
